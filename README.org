@@ -1,0 +1,16 @@
+#+TITLE: Newmacs config
+
+A modular Emacs config made for easy and flexible end-user configuration.
+
+
+It is separated into different modules, separated by file.
+
+* Notes to self:
+
+** Keybinds/Commands
+
+=C-x C-x= : jump back to previous mark/location.
+
+emacs-lisp-mode-map
+=<backtab>= : open-fold at ;;;
+=M-<iso-lefttab>= : toggle folds all at ;;;

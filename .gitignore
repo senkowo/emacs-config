@@ -1,0 +1,9 @@
+# -*- mode: gitignore; -*-
+
+straight/
+var/
+
+elpa/
+eln-cache/
+eshell/history
+eshell/lastdir
