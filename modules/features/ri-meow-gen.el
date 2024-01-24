@@ -1,18 +1,22 @@
 ;;; ri-meow-gen --- Meow modal keys - General settings -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; Sets up Meow using my personal preferred layout.
+;; Sets up Meow (modal editor like evil-mode).
 ;;
-;; In the future, this will be broken up into multiple configs:
-;;  ri-meow-general does general meow stuff that applies to all keyboards.
-;;  ./meow/
-;;   ri-meow-dvp has my dvp layout, and also meow-global-mode.
-;;   ri-meow-qwerty has someone's default meow qwerty layout, and enable.
+;; This file sets general Meow settings that work for all keyboard layouts.
+;; This file will need to be accompanied by a file that loads
+;; keyboard-specific keybinds for Meow.
+;; (for example, ri-meow-dvp (dvorak-programmer) or ri-meow-qwerty (WIP)).
+;;
+;; Notes:
+;; - maybe make C-M-g exit everything reguardless of state?
 
 ;;; Code:
 
 (require 'setup)
 (require 'cl-extra)
+
+;;; --- Functions and variables relating to Meow: ----
 
 (defun ri/meow-exit-all-and-save ()
   "When run, exit meow insert mode, exit snippet, then save buffer."
@@ -51,6 +55,7 @@
   (meow-define-keys 'insert
     '("C-g" . meow-insert-exit)
     '("C-M-g" . ri/meow-exit-all-and-save))
+  (:global "C-c c" ri/meow-exit-all-and-save)
 
   ;; start certain modes in insert-mode
   (dolist (mode ri/meow-insert-default-modes)
@@ -73,151 +78,16 @@
   (meow-motion-overwrite-define-key
    '("SPC" . ri/meow-SPC-ignore)))
 
+;;; --- Check at Emacs startup if a keyboard layout was configured: ----
 
-;;; --- Keybinding config: ----
+(defvar ri/meow-layout-configured? nil
+  "If nil after Emacs loads, Meow was loaded but without a keyboard layout.")
 
-;; TODO: relocate elsewhere.
-
-(defun meow-setup ()
-  (meow-motion-overwrite-define-key
-   ;; custom keybinding for motion state
-   '("<escape>" . ignore)
-   '("t" . "p") ; improved solution? (access Motion "t" with "SPC t")
-   )
-  (meow-leader-define-key
-   '("t" . "H-t")
-   ;; '("p" . "H-p")
-   ;; '("u" . ctl-x-map)
-   '("1" . meow-digit-argument)
-   '("2" . meow-digit-argument)
-   '("3" . meow-digit-argument)
-   '("4" . meow-digit-argument)
-   '("5" . meow-digit-argument)
-   '("6" . meow-digit-argument)
-   '("7" . meow-digit-argument)
-   '("8" . meow-digit-argument)
-   '("9" . meow-digit-argument)
-   '("0" . meow-digit-argument)
-   '("/" . meow-keypad-describe-key)
-   '("?" . meow-cheatsheet))
-  (meow-normal-define-key
-   ;; make S-<num> easier to hit with DVP by using symbols.
-   '("*" . meow-expand-0)
-   '("=" . meow-expand-9)
-   '("!" . meow-expand-8)
-   '("[" . meow-expand-7)
-   '("]" . meow-expand-6)
-   '("{" . meow-expand-5)
-   '("+" . meow-expand-4)
-   '("}" . meow-expand-3)
-   '(")" . meow-expand-2)
-   '("(" . meow-expand-1)
-   '("1" . digit-argument)
-   '("2" . digit-argument)
-   '("3" . digit-argument)
-   '("4" . digit-argument)
-   '("5" . digit-argument)
-   '("6" . digit-argument)
-   '("7" . digit-argument)
-   '("8" . digit-argument)
-   '("9" . digit-argument)
-   '("0" . digit-argument)
-   ;; symbols
-   '("-" . negative-argument)
-   '(";" . meow-reverse)
-   '(":" . meow-goto-line) ;; moved from "Q" and "E"
-   '("," . meow-inner-of-thing)
-   '("." . meow-bounds-of-thing)
-   '("<" . meow-beginning-of-thing)
-   '(">" . meow-end-of-thing)
-   ;; basic letters
-   '("a" . meow-append)
-   '("A" . meow-open-below)
-   '("b" . meow-back-word)
-   '("B" . meow-back-symbol)
-   '("c" . meow-change)
-   '("d" . meow-delete)
-   '("D" . meow-backward-delete)
-   '("e" . meow-line)
-   ;; '("E" . meow-goto-line) ;; removed, since ":" for it works
-   '("f" . meow-find)
-   '("F" . meow-search) ;; moved from "s" ("s" is used for movement)
-   '("g" . meow-cancel-selection)
-   '("G" . meow-grab)
-   ;; H Directional key moved to the bottom
-   '("i" . meow-insert)
-   '("I" . meow-open-above)
-   '("j" . meow-join)
-   '("k" . meow-kill)
-   '("l" . meow-till)
-   ;; '("m" . meow-mark-word) ;; swap with w, next-word (because "b"/"m" is easy for mvmnt)
-   ;; '("M" . meow-mark-symbol) ;; swap with W, next-symbol (because "b"/"m" is easy for mvmnt)
-   '("m" . meow-next-word) ;; moved from "w", mark-word
-   '("M" . meow-next-symbol) ;; moved from "W", mark-symbol
-   ;; N Directional key moved to the bottom
-   '("o" . meow-block)
-   '("O" . meow-to-block)
-   '("p" . meow-prev)
-   '("P" . meow-prev-expand)
-   '("q" . meow-quit)
-   '("Q" . ri/quit-temp-window)
-   ;; '("Q" . meow-goto-line) ;; move to " : "
-   '("r" . meow-replace)
-   '("R" . meow-swap-grab)
-   ;; '("s" . meow-search) ;; move to F, replace with directional keys
-   ;; S Directional key moved to the bottom
-   ;; T Directional key moved to the bottom
-   '("u" . meow-undo)
-   '("U" . meow-undo-in-selection)
-   '("v" . meow-visit)
-   ;; '("w" . meow-next-word) ;; swap with m, mark-word/symbol
-   ;; '("W" . meow-next-symbol)
-   '("w" . meow-mark-word) ;; moved from "m", mark-word
-   '("W" . meow-mark-symbol) ;; moved from "M", mark-symbol
-   '("x" . meow-save)
-   '("X" . meow-sync-grab)
-   '("y" . meow-yank)
-   '("z" . meow-pop-selection)
-   '("'" . repeat)
-   '("/" . ri/scroll-down-half-page) ;; new keys
-   '("?" . ri/scroll-up-half-page) ;; new keys
-   '("<escape>" .  keyboard-escape-quit)
-
-   ;; Directional keys:
-
-   ;; <-  ^  v  ->
-   '("h" . meow-left)
-   '("H" . meow-left-expand)
-   '("t" . meow-prev)
-   '("T" . meow-prev-expand)
-   '("n" . meow-next)
-   '("N" . meow-next-expand)
-   '("s" . meow-right)
-   '("S" . meow-right-expand)
-
-   ;; ^  <-  v  ->
-   ;; '("h" . meow-prev)
-   ;; '("H" . meow-prev-expand)
-   ;; '("t" . meow-left)
-   ;; '("T" . meow-left-expand)
-   ;; '("n" . meow-next)
-   ;; '("N" . meow-next-expand)
-   ;; '("s" . meow-right)
-   ;; '("S" . meow-right-expand)
-
-   ;; ^  /  <-  ->  v
-   ;; '("h" . meow-left)
-   ;; '("H" . meow-left-expand)
-   ;; '("t" . meow-right)
-   ;; '("T" . meow-right-expand)
-   ;; '("n" . meow-prev)
-   ;; '("N" . meow-prev-expand)
-
-
-   ))
-
-(meow-setup)
-(meow-global-mode 1)
+(add-hook 'emacs-startup-hook ; TODO: make into add-to-list? duplicates?
+	  (lambda ()
+	    (unless ri/meow-layout-configured?
+	      (message "NOTE: meow loaded w/o a keyboard layout config.
+      If you did, then toggle the variable `ri/meow-layout-configured?'"))))
 
 
 (provide 'ri-meow-gen)

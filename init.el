@@ -1,4 +1,4 @@
-;; init.el --- main init file -*- lexical-binding: t; -*-
+;;; init.el --- main init file -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;; The main init file.
@@ -26,6 +26,7 @@
 (add-to-list 'load-path (concat user-emacs-directory "modules/pre-init"))
 (add-to-list 'load-path (concat user-emacs-directory "modules/init"))
 (add-to-list 'load-path (concat user-emacs-directory "modules/features"))
+(add-to-list 'load-path (concat user-emacs-directory "modules/ri-config"))
 
 ;;; --- Identify System: ----
 
@@ -59,6 +60,8 @@
 ;;; -- Load Modules: ---
 ;; TODO: all the icons? nerd-fonts?
 
+(require 'ri-modules)
+
 
 
 (defvar ri/init-modules-list nil)
@@ -70,6 +73,7 @@
 
 	;; init
 	;; (process and prioritize user settings from here)
+	;; (things that MUST come before everything else)
 	;; TODO: make it so you can do (r ...) (r ...) 'rest
 	(require 'ri-theme)
 	(require 'ri-basic-ui)
@@ -77,20 +81,21 @@
 	(require 'ri-def-fonts)
 	(require 'ri-qol)
 
-	;; (require 'ri-modules)
-	;; (ri/modules-require)
-	
 	;; features
+	;; (here, order is irrelevant).
 	(require 'ri-line-numbers)
-	(require 'ri-core) ; empty right now
+	(require 'ri-core)		; empty right now
 	(require 'ri-org)
 	(require 'ri-transparency)
+	(require 'ri-meow-gen) ; T
+	;; (require 'ri-evil-keys) ; T
+	(require 'ri-windows)
+	(require 'ri-buffers)
 
-	(require 'ri-meow-gen)
+	;; my-config
+	(require 'ri-meow-dvp)
 
 
-	;; (require 'ri-evil-keys)
-	;; (require 'ri-meow-keys)
 	
 	;; (require 'ri-exwm)
 

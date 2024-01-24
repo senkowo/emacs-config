@@ -4,6 +4,8 @@
 
 ;;; Code:
 
+(require 'setup)
+
 ;;; --- Auto-revert changed files: ----
 
 ;; Update dired and file buffers when changed in filesystem.

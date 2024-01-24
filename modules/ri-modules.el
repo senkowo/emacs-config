@@ -16,7 +16,8 @@
   '((require 'ri-theme)
     (require 'ri-basic-ui)
     (require 'ri-basic-func)
-    (require 'ri-def-fonts)))
+    (require 'ri-def-fonts)
+    (require 'ri-qol)))
 
 ;; (defvar ri/modules-features-list
 ;;   (mapcar ))
@@ -33,7 +34,7 @@ Symbols:
 
 More to be added..."
   (cl-typecase list-or-type
-    (atom (ri/modules-require
+    (atom (ri/modules-require ; TODO: what. recursion...?
 	   (pcase 'pre-init
 	     ('pre-init ri/modules-pre-init-list)
 	     ('init ri/modules-init-list))))
