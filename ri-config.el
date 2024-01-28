@@ -56,23 +56,26 @@
 
 ;;; ----- Do whatever you want below: -----
 
-;; Loads a list of modules suited for me, lily :3 (mostly just dvp keybinds).
-;; (comment this out if u dont want meow with dvorak)
-(progn
-  (defvar ri/lily-specific-modules
-    '((require 'ri-meow-dvp)
-      (require 'ri-swap-x-and-u)))
-  (ri/modules-require ri/lily-specific-modules))
+(defvar ri/use-standard-config-modules nil)
 
-;; Example for meow with qwerty:
-;; (progn
-;;   (defvar rx/example-meow-qwerty-modules
-;;     '(require 'ri-meow-qwerty))
-;;   (ri/modules-require rx/example-meow-qwerty-modules))
+(if (seq-contains command-line-args "--sane-keybinds")
+    (setq ri/use-standard-config-modules t))
 
-
-
-
+(if ri/use-standard-config-modules
+    ;; Example for meow with qwerty:
+    (progn
+      (defvar rx/example-meow-qwerty-modules
+	'(require 'ri-meow-qwerty))
+      (ri/modules-require rx/example-meow-qwerty-modules))
+  
+;;; Otherwise, use my personal config:
+  ;; Loads a list of modules suited for me, lily :3 (mostly just dvp keybinds).
+  ;; (comment this out if u dont want meow with dvorak)
+  (progn
+    (defvar ri/lily-specific-modules
+      '((require 'ri-meow-dvp)
+	(require 'ri-swap-x-and-u)))
+    (ri/modules-require ri/lily-specific-modules)))
 
 
 
