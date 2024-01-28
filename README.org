@@ -15,6 +15,10 @@ Because meow with dvorak-programmer is the default, run the previous command wit
 
 All this is subject to change.
 
+* Configuration
+
+You can configure which modules are loaded in =config.el=. However, I wouldn't advise configuring it and expecting everything to work when you next git pull.
+
 * TODO:
 - [ ] able to swap between evil and meow
 - [ ] try to make compatible with at least dvp and qwerty
