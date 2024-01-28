@@ -56,19 +56,21 @@
 
 ;;; ----- Do whatever you want below: -----
 
-(defvar ri/use-standard-config-modules nil)
+(defvar ri/use-standard-config-modules nil
+  "If non-nil, use a generic config of modules below.")
 
+;; start emacs with the argument "--sane-keybinds" to set the var to t
 (if (seq-contains command-line-args "--sane-keybinds")
     (setq ri/use-standard-config-modules t))
 
 (if ri/use-standard-config-modules
-    ;; Example for meow with qwerty:
+    ;; default config modules. set up for meow with qwerty:
     (progn
       (defvar rx/example-meow-qwerty-modules
 	'(require 'ri-meow-qwerty))
       (ri/modules-require rx/example-meow-qwerty-modules))
   
-;;; Otherwise, use my personal config:
+  ;; Otherwise, use my personal config:
   ;; Loads a list of modules suited for me, lily :3 (mostly just dvp keybinds).
   ;; (comment this out if u dont want meow with dvorak)
   (progn
