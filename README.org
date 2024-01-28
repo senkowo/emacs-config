@@ -19,6 +19,14 @@ All this is subject to change.
 
 You can configure which modules are loaded in =config.el=. However, I wouldn't advise configuring it and expecting everything to work when you next git pull.
 
+* Basic keybinds reference:
+
+- M-o :: other-window
+- SPC :: Meow/Evil leader key (if Meow, =SPC= is basically same as =C-c=)
+- SPC f :: (prefix) files
+- SPC b :: (prefix) buffers
+- SPC w :: (prefix) windows (TO FIX)
+
 * TODO:
 - [ ] able to swap between evil and meow
 - [ ] try to make compatible with at least dvp and qwerty

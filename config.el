@@ -41,7 +41,7 @@
     (require 'ri-guix)
     (require 'ri-terminal)
     (require 'ri-dired)
-    ;; (require 'ri-dirvish)
+    (require 'ri-dirvish)
 
     ;; dev
     (require 'ri-magit)
