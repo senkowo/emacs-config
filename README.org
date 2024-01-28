@@ -2,10 +2,15 @@
 
 A modular Emacs config made for easy and flexible end-user configuration.
 
-
 It is separated into different modules, separated by file.
 
+Designed with speed, modularity, and minimalism in mind, it makes reducing your config to only the bare minimum easy.
+
+This project is still very incomplete and under active development.
+
 * TODO:
+- [ ] able to swap between evil and meow
+- [ ] try to make compatible with at least dvp and qwerty
 - [ ] evil-mode
 - [ ] undo-tree
 - [ ] crux
@@ -16,6 +21,8 @@ It is separated into different modules, separated by file.
 - [ ] info
 - [ ] darkroom
 - [ ] calc
+- [ ] dired/dirvish improve keybinds
+- [ ] improve keybinds for everything
 - [ ] stumpwm
 - [ ] ALL of org and related stuff
 - [ ] LSP, ide, languages
@@ -27,12 +34,3 @@ It is separated into different modules, separated by file.
 - [ ] lots and lots and lots more
 
 * Notes to self:
-
-** Keybinds/Commands
-
-=C-x C-x= : jump back to previous mark/location.
-
-emacs-lisp-mode-map
-=<backtab>= : open-fold at ;;;
-=M-<iso-lefttab>= : toggle folds all at ;;;
-
