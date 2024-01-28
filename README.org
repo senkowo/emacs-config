@@ -5,6 +5,27 @@ A modular Emacs config made for easy and flexible end-user configuration.
 
 It is separated into different modules, separated by file.
 
+* TODO
+- [ ] evil-mode
+- [ ] undo-tree
+- [ ] crux
+- [ ] free-keys
+- [ ] better window management
+- [ ] ivy config
+- [ ] better ivy
+- [ ] info
+- [ ] darkroom
+- [ ] calc
+- [ ] stumpwm
+- [ ] ALL of org and related stuff
+- [ ] LSP, ide, languages
+- [ ] crdt
+- [ ] eshell
+- [ ] sudo edit
+- [ ] hide dots
+- [ ] misc programs
+- [ ] lots and lots and lots more
+
 * Notes to self:
 
 ** Keybinds/Commands
@@ -14,3 +35,4 @@ It is separated into different modules, separated by file.
 emacs-lisp-mode-map
 =<backtab>= : open-fold at ;;;
 =M-<iso-lefttab>= : toggle folds all at ;;;
+
