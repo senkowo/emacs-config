@@ -10,14 +10,14 @@ This project is still very incomplete and under active development.
 
 * Installation
 
-To use this config without eradicating your pre-existing =~/.emacs.d=, you may git clone the project anywhere, and then run =$ emacs --init-directory <path-to-configdir>= to run emacs from that directory. 
+To use this config without eradicating your pre-existing =~/.emacs.d=, you may git clone the project anywhere, and then run =$ emacs --init-directory <path-to-repo>= to run emacs from that directory. 
 Because meow with dvorak-programmer is the default, run the previous command with the argument =--sane-keybinds= to load qwerty meow keybinds.
 
 All this is subject to change.
 
 * Configuration
 
-You can configure which modules are loaded in =config.el=. However, I wouldn't advise configuring it and expecting everything to work when you next git pull.
+You can configure which modules are loaded in =config.el=. However, I wouldn't advise configuring it and expecting everything to work when you next run git pull.
 
 * Basic keybinds reference:
 
