@@ -7,6 +7,10 @@
 ;;; Code:
 (require 'cl-macs) ; for cl-typecase
 
+;;; --- Modules variables: ----
+
+;; TODO: is this necessary?
+
 (defvar ri/modules-pre-init-list
   '((require 'ri-package)
     (require 'ri-setup)
@@ -22,6 +26,10 @@
 ;; (defvar ri/modules-features-list
 ;;   (mapcar ))
 
+;;; --- Custom benchmarking tool: ----
+
+;;; --- Modules require wrapper: ----
+
 (defun ri/modules-require (list-or-type)
   "Evaluate require statements for loading modules.
 If LIST-OR-TYPE is a list, eval all sublist exprs.
@@ -34,7 +42,7 @@ Symbols:
 
 More to be added..."
   (cl-typecase list-or-type
-    (atom (ri/modules-require ; TODO: what. recursion...?
+    (atom (ri/modules-require		; TODO: what. recursion...?
 	   (pcase 'pre-init
 	     ('pre-init ri/modules-pre-init-list)
 	     ('init ri/modules-init-list))))
@@ -44,6 +52,8 @@ More to be added..."
 		    (message "  loaded %s" (nth 1 cmd)))
 		  list-or-type))
     (t (error "Type not valid"))))
+
+;;; --- End: ----
 
 (provide 'ri-modules)
 ;;; ri-modules.el ends here

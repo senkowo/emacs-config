@@ -11,6 +11,7 @@
 (defun ri/meow-dvp-setup ()
   "My Meow configuration.
 Set up for dvorak-programmer (dvp) keyboard layout."
+  (setq meow-cheatsheet-layout meow-cheatsheet-layout-dvp)
   (meow-motion-overwrite-define-key
    ;; custom keybinding for motion state
    '("<escape>" . ignore)

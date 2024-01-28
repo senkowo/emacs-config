@@ -1,0 +1,6 @@
+#+title: init directory
+
+* Info
+
+In =modules/init=, all these files are run, always. 
+- so things like rainbow-delimiters,  

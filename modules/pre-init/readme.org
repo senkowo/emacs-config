@@ -1,0 +1,5 @@
+#+title: pre-init directory
+
+* info
+
+=modules/pre-init= is the first dir to run, and files must be run in a very specific order.

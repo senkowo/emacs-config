@@ -22,11 +22,16 @@
                              (setq gc-cons-threshold (* 2 1000 1000))))
 
 ;; add modules to load-path
-(add-to-list 'load-path (concat user-emacs-directory "modules"))
-(add-to-list 'load-path (concat user-emacs-directory "modules/pre-init"))
-(add-to-list 'load-path (concat user-emacs-directory "modules/init"))
-(add-to-list 'load-path (concat user-emacs-directory "modules/features"))
-(add-to-list 'load-path (concat user-emacs-directory "modules/ri-config"))
+;; TODO: recursively add all files from modules, that end with .el?
+;;  get list of parent dirs for each file and get non-duplicating...
+;;  Rewrite this with my own func, so can include everything!
+(let ((default-directory (concat user-emacs-directory "modules")))
+  (normal-top-level-add-subdirs-to-load-path))
+;; (add-to-list 'load-path (concat user-emacs-directory "modules"))
+;; (add-to-list 'load-path (concat user-emacs-directory "modules/pre-init"))
+;; (add-to-list 'load-path (concat user-emacs-directory "modules/init"))
+;; (add-to-list 'load-path (concat user-emacs-directory "modules/features"))
+;; (add-to-list 'load-path (concat user-emacs-directory "modules/ri-config"))
 
 ;;; --- Identify System: ----
 
@@ -59,55 +64,26 @@
 
 ;;; -- Load Modules: ---
 ;; TODO: all the icons? nerd-fonts?
+;; TODO: in order to test functionality, reorder the load order
+;; of featured and ri-config to make sure it's order-independent.
+;; TODO: define keyboard layout in var (dvp,qwerty,custom)
+;; TODO: create macros that does Rest of modules, which can macroexpand.
 
 (require 'ri-modules)
 
+(defvar ri/pre-init-modules
+  '((require 'ri-package)
+    (require 'ri-setup)
+    (require 'ri-pivotal)))
+(ri/modules-require ri/pre-init-modules)
+
+;; Load the user-side config
+(load (concat user-emacs-directory "ri-config"))
 
 
-(defvar ri/init-modules-list nil)
-(setq ri/init-modules-list
-      '(;; pre-init (need to be in this order)
-	(require 'ri-package)
-	(require 'ri-setup)
-	(require 'ri-pivotal)
-
-	;; init
-	;; (process and prioritize user settings from here)
-	;; (things that MUST come before everything else)
-	;; TODO: make it so you can do (r ...) (r ...) 'rest
-	(require 'ri-theme)
-	(require 'ri-basic-ui)
-	(require 'ri-basic-func)
-	(require 'ri-def-fonts)
-	(require 'ri-qol)
-
-	;; features
-	;; (here, order is irrelevant).
-	(require 'ri-line-numbers)
-	(require 'ri-core)		; empty right now
-	(require 'ri-org)
-	(require 'ri-transparency)
-	(require 'ri-meow-gen) ; T
-	;; (require 'ri-evil-keys) ; T
-	(require 'ri-windows)
-	(require 'ri-buffers)
-
-	;; my-config
-	(require 'ri-meow-dvp)
 
 
-	
-	;; (require 'ri-exwm)
 
-	(require 'ri-server)
-
-	))
-
-(mapc (lambda (cmd)
-	(benchmark-progn
-	  (eval cmd))
-	(message "  loaded %s" (nth 1 cmd)))
-      ri/init-modules-list)
 
 ;;; init.el ends here
 

@@ -51,8 +51,34 @@
     "List of actions for `aw-dispatch-default'.")
   (global-set-key (kbd "M-o") 'ace-window))
 
+;;; --- Windows leader keybinds: ----
 
-
+;; replace evil-direction w/ package
+(leader-key-def
+  "w"  '(:ignore t :which-key "window")
+  "wv" '(split-window-right :which-key "v-split")
+  "ws" '(split-window-below :which-key "h-split")
+  "wd" '(delete-window :which-key "close window")
+  "wc" '(delete-window :which-key "close window")
+  "ww" '(evil-window-next :which-key "next-window")
+  "wW" '(evil-window-prev :which-key "prev-window")
+  ;;
+  "wp" '(windmove-up :which-key "window-up")
+  "wt" '(windmove-up :which-key "window-up")
+  "wn" '(windmove-down :which-key "window-down")
+  ;;
+  "wb" '(windmove-left :which-key "window-left")
+  "wf" '(windmove-right :which-key "window-right")
+  "ww" '(aw-flip-window :which-key "other-window")
+  ;;
+  ;; "wH" '(evil-window-move-far-left :which-key "move left")
+  ;; "wJ" '(evil-window-move-very-bottom :which-key "move down")
+  ;; "wK" '(evil-window-move-very-top :which-key "move up")
+  ;; "wL" '(evil-window-move-far-right :which-key "move right")
+  "wa" '(hydra-window-adjust/body :which-key "window-ratio-adjust")
+  "wi" '(:ignore t :which-key "minibuffer")
+  "wie" 'minibuffer-keyboard-quit
+  "wio" 'switch-to-minibuffer)
 
 
 

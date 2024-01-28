@@ -35,7 +35,8 @@
 (defvar ri/meow-SPC-ignore-list
   '(Info-mode
     gnus-summary-mode
-    gnus-article-mode)
+    gnus-article-mode
+    w3m-mode)
   "Disable meow-keypad in these modes.")
 
 ;;; --- Meow: ----

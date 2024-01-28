@@ -32,6 +32,13 @@
             ("\\`\\(/tmp\\|/dev/shm\\)\\([^/]*/\\)*\\(.*\\)\\'" "\\3")
             ("." ,auto-save-dir t)))))
 
+;;; --- Diminish: ----
+
+;; TODO: move elsewhere, make my own function that loads the
+;; module from inside here!!! Yoooo!!!
+
+(setup (:pkg diminish))
+
 ;;; --- End: ----
 
 (provide 'ri-pivotal)
