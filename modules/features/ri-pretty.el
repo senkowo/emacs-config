@@ -31,7 +31,8 @@
   ;; logo/banner
   ;; (setq dashboard-startup-banner "/home/yui/Pictures/screenshots/hpcc_logo3_ALPHA_1000_c1.png")
   ;; (setq dashboard-startup-banner "/home/yui/Pictures/screenshots/hackucf2_alpha1_200.png")
-  (setq dashboard-startup-banner "/home/yui/Pictures/screenshots/hpcc_logo3_ALPHA_1000_c2.png")
+  ;; (setq dashboard-startup-banner "/home/yui/Pictures/screenshots/hpcc_logo3_ALPHA_1000_c2.png")
+  (setq dashboard-startup-banner (concat user-emacs-directory "misc/icons/horse3-1000.png"))
   ;; dont actually do this, edit the actual image to fix the size instead.
   ;; (setq dashboard-image-banner-max-height 200)
   )
