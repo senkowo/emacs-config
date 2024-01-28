@@ -78,7 +78,7 @@
 (ri/modules-require ri/pre-init-modules)
 
 ;; Load the user-side config
-(load (concat user-emacs-directory "ri-config"))
+(load (concat user-emacs-directory "config"))
 
 
 

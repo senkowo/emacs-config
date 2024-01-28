@@ -1,4 +1,4 @@
-;;; ri-config.el --- a simple interface to configure Emacs -*- lexical-binding: t; -*-
+;;; config.el --- a simple interface to configure Emacs -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;;
@@ -41,7 +41,7 @@
     (require 'ri-guix)
     (require 'ri-terminal)
     (require 'ri-dired)
-    (require 'ri-dirvish)
+    ;; (require 'ri-dirvish)
 
     ;; dev
     (require 'ri-magit)
@@ -83,5 +83,4 @@
 
 
 
-(provide 'ri-config)
-;;; ri-config.el ends here
+;;; config.el ends here

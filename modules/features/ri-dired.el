@@ -19,6 +19,7 @@
   (setq dired-listing-switches "-agho --group-directories-first"
 	dired-dwim-target t ; auto select dir to move to if another dired window open.
 	delete-by-moving-to-trash t)
+  (:bind "h" dired-up-directory) ; TODO: only applicable to dvp
   ;; TODO: add stuff for evil mode here
   )
 
