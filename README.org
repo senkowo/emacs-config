@@ -5,7 +5,7 @@ A modular Emacs config made for easy and flexible end-user configuration.
 
 It is separated into different modules, separated by file.
 
-* TODO
+* TODO:
 - [ ] evil-mode
 - [ ] undo-tree
 - [ ] crux
