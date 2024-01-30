@@ -100,7 +100,7 @@
       (meow--with-selection-fallback
        (cond
 	((not (meow--selection-type))
-	 ;; basically meow-C-d
+	 ;; basically meow-delete
 	 (meow--execute-kbd-macro meow--kbd-delete-char))
 	(t
 	 ;; kills region
