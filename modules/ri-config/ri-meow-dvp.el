@@ -69,7 +69,8 @@ Set up for dvorak-programmer (dvp) keyboard layout."
    '("b" . meow-back-word)
    '("B" . meow-back-symbol)
    '("c" . meow-change)
-   '("d" . meow-delete)
+   ;; '("d" . meow-delete)
+   '("d" . ri/meow-delete-or-kill)
    '("D" . meow-backward-delete)
    '("e" . meow-line)
    ;; '("E" . meow-goto-line) ;; removed, since ":" for it works
