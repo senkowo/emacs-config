@@ -97,16 +97,17 @@
   (interactive)
   (let ((select-enable-clipboard meow-use-clipboard))
     (when (meow--allow-modify-p)
-      (meow--with-selection-fallback
-       (cond
-	((not (meow--selection-type))
-	 ;; basically meow-delete
-	 (meow--execute-kbd-macro meow--kbd-delete-char))
-	(t
-	 ;; kills region
-	 (meow--prepare-region-for-kill)
-         (meow--execute-kbd-macro meow--kbd-kill-region)))))))
-
+      (if (not (region-active-p))
+	  ;; meow-delete
+	  (meow--execute-kbd-macro meow--kbd-delete-char)
+	;; meow-kill
+	(meow--with-selection-fallback
+	 (cond
+	  ((equal '(expand . join) (meow--selection-type))
+           (delete-indentation nil (region-beginning) (region-end)))
+	  (t
+	   (meow--prepare-region-for-kill)
+           (meow--execute-kbd-macro meow--kbd-kill-region))))))))
 
 (provide 'ri-meow-gen)
 ;;; ri-meow-gen.el ends here
