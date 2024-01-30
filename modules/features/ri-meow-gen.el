@@ -90,6 +90,23 @@
 	      (message "NOTE: meow loaded w/o a keyboard layout config.
       If you did, then toggle the variable `ri/meow-layout-configured?'"))))
 
+;;; --- Meow custom keybinds: ----
+
+(defun ri/meow-delete-or-kill ()
+  "If no region is selected, `meow-delete', otherwise `meow-kill'."
+  (interactive)
+  (let ((select-enable-clipboard meow-use-clipboard))
+    (when (meow--allow-modify-p)
+      (meow--with-selection-fallback
+       (cond
+	((not (meow--selection-type))
+	 ;; basically meow-C-d
+	 (meow--execute-kbd-macro meow--kbd-delete-char))
+	(t
+	 ;; kills region
+	 (meow--prepare-region-for-kill)
+         (meow--execute-kbd-macro meow--kbd-kill-region)))))))
+
 
 (provide 'ri-meow-gen)
 ;;; ri-meow-gen.el ends here
