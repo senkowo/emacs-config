@@ -67,7 +67,7 @@
     ;; default config modules. set up for meow with qwerty:
     (progn
       (defvar rx/example-meow-qwerty-modules
-	'(require 'ri-meow-qwerty))
+	'((require 'ri-meow-qwerty)))
       (ri/modules-require rx/example-meow-qwerty-modules))
   
   ;; Otherwise, use my personal config:
