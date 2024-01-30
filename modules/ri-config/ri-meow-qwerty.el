@@ -55,7 +55,7 @@
    '("B" . meow-back-symbol)
    '("c" . meow-change)
    ;; '("d" . meow-delete)
-   '("d" . ri/meow-delete-or-kill)
+   '("d" . ri/meow-delete-or-kill) ; hacked ver
    '("D" . meow-backward-delete)
    '("e" . meow-next-word)
    '("E" . meow-next-symbol)
