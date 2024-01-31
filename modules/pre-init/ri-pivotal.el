@@ -24,13 +24,16 @@
             ("." . ,backup-dir))))
 
   ;; Tidy up auto-save files
-  (let ((auto-save-dir (no-littering-expand-var-file-name "auto-save/")))
-    (make-directory auto-save-dir t)
-    (setq auto-save-file-name-transforms
-          `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'"
-             ,(concat temporary-file-directory "\\2") t)
-            ("\\`\\(/tmp\\|/dev/shm\\)\\([^/]*/\\)*\\(.*\\)\\'" "\\3")
-            ("." ,auto-save-dir t)))))
+  (setq auto-save-file-name-transforms
+        `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+  ;; (let ((auto-save-dir (no-littering-expand-var-file-name "auto-save/")))
+  ;;   (make-directory auto-save-dir t)
+  ;;   (setq auto-save-file-name-transforms
+  ;;         `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'"
+  ;;            ,(concat temporary-file-directory "\\2") t)
+  ;;           ("\\`\\(/tmp\\|/dev/shm\\)\\([^/]*/\\)*\\(.*\\)\\'" "\\3")
+  ;;           ("." ,auto-save-dir t))))
+  )
 
 ;;; --- Diminish: ----
 
