@@ -17,7 +17,8 @@
 
 ;; variable pitch font (toc links, regular text in org, etc...)
 ;; how about Iosveka instead?
-(set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 125 :weight 'regular)
+;; TODO: move this to org mode?
+;; (set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 125 :weight 'regular)
 
 
 (provide 'ri-def-fonts)
