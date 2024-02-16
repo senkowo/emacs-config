@@ -12,9 +12,13 @@
   (:also-load magit-todos)
   (:global "C-M-;" magit-status)	; TODO: even used???
   ;; TODO: is this necessary?
-  (:option magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  (:option magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+  ;; // leader keys
+  (leader-key-def
+    "v" '(:ignore t :which-key "magit")
+    "vv" 'magit))
 
-(setup (:pkg magit-todos))
+(setup (:pkg magit-todos)) ; TODO: do i need this?
 
 ;;; --- Forge: ----
 

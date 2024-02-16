@@ -13,10 +13,10 @@
 		     (emacs-init-time "%.2f")
 		     gcs-done)))
 
-;; gc during initialization
+;; set gc during initialization
 (setq gc-cons-threshold (* 50 1000 1000))
 
-;; gc after initialization
+;; set gc after initialization
 (add-hook 'after-init-hook (lambda ()
 			     ;; Make gc pauses faster by decreasing the threshold.
                              (setq gc-cons-threshold (* 2 1000 1000))))

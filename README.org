@@ -53,3 +53,23 @@ You can configure which modules are loaded in =config.el=. However, I wouldn't a
 - [ ] lots and lots and lots more
 
 * Notes to self:
+
+(override-module 'ri-meow-gen)
+;; module not found
+;; run before load modules?
+
+have cursor pre-indented to header body distance in org-mode? is this bad? slow?
+when open new help window, make it auto switch?
+- actually, only has this effect if cursor at end of file/buffer...
+
+For each user module found, create a function called mod/file-name that can be run to load the module!
+
+Make C-<return> take the C-j command for lsp-mode? using [brackets] thing used in helpful mode?
+
+For crux, make it local to buffer, like in org-mode only...
+
+In userside config, =(:ri-disable)= will prevent future setup declaration with same name from running.
+
+docview disable line numbers mode
+
+docview disable blink cursor mode

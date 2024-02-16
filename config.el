@@ -49,7 +49,8 @@
     (require 'ri-lisp-gen)
     (require 'ri-lisp-adv)
     (require 'ri-dev-gen)
-
+    (require 'ri-lsp)
+    (require 'ri-lang-c-cpp)
     ;; other
     (require 'ri-server)))
 (ri/modules-require ri/general-modules)

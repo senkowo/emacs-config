@@ -7,11 +7,23 @@
 
 (require 'setup)
 
-;;; --- Rainbow delimiters
+;;; --- Rainbow delimiters: ----
 
 (setup (:pkg rainbow-delimiters)
   (:hook-into prog-mode))
 
+;;; --- Enable Flycheck: ----
+
+(add-hook 'emacs-lisp-mode-hook #'flycheck-mode)
+
+;;; --- Prettify Symbols: ----
+
+(global-prettify-symbols-mode 1)
+
+;;; --- Aggressive indent: ----
+;; TODO: do i add aggressive-indent?
+
+;;; --- End: ---
 
 (provide 'ri-emacs-lisp)
 ;;; ri-emacs-lisp.el ends here

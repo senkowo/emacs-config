@@ -7,12 +7,12 @@
 
 ;;; Code:
 
+(require 'server)
+
 ;;; --- Server: ----
 (add-hook 'after-init-hook
           (lambda ()
-            (require 'server)
-	    (unless (or (boundp 'server-process)
-			(processp server-process)
+	    (unless (or (processp server-process)
 			(server-running-p))
 	      (server-start)
 	      (message "Emacsclient Server started!"))))

@@ -7,8 +7,9 @@
 (require 'setup)
 
 ;; NOTE: this will show a bunch of error messages when editing lisp code (emacs-lisp-mode)
-(setup (:pkg flycheck)
-  (:hook-into lsp-mode emacs-lisp-mode)) ; TODO: better way to use flycheck
+;; TODO: disable flycheck on elisp, bc it demands docs?
+;; Modes to enable flycheck in are enabled in their respective configs.
+(setup (:pkg flycheck))
 
 
 

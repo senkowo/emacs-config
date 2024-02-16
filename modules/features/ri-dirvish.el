@@ -56,10 +56,10 @@
         (let ((mpv (or (executable-find "mpv") "mpv")))
           `((,dirvish-audio-exts . (,mpv "--profile=builtin-pseudo-gui" "%f"))
             (,dirvish-video-exts . (,mpv "%f")))))
-  (:bind "C-c d D" dirvish
-	 "C-c d f" dirvish-fd
-	 "C-c D" dirvish-quick-access
-	 "C-c d a" dirvish-quick-access)
+  (:global "C-c d D" dirvish
+	   "C-c d f" dirvish-fd
+	   "C-c D" dirvish-quick-access
+	   "C-c d a" dirvish-quick-access)
   ;; Set dirvish interface keybinds:
   ;; (note: irvish inherits `dired-mode-map')
   (:with-map dirvish-mode-map
