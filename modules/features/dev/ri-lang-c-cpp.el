@@ -32,7 +32,7 @@ USE-EXTRA will be added to the list of parameters of the run command."
                 valid-files))
          (run-command
           (if (and use-extra ri/c-compile-inputs)
-              (concat "gcc " src " -std=gnu11 -lm -g -o " exe " && ./" exe " && "
+              (concat "gcc " src " -std=gnu11 -lm -g -o " exe " && ./" exe " "
                       ri/c-compile-inputs)
             (concat "gcc " src " -std=gnu11 -lm -g -o " exe " && ./" exe)
             ;; (concat "gcc " src " -std=gnu11 -lm -Wall -Wextra -pedantic -g -o " exe " && valgrind ./" exe " --tool=memcheck --leak-check=full --show-leak-kinds=all --verbose --track-origins=yes")
@@ -69,12 +69,17 @@ USE-EXTRA will be added to the list of parameters of the run command."
                 (meow-insert-mode)))
         (progn
           (message "%s" "could not find compilation buffer!"))))))
-
 (define-key c-mode-map (kbd "<f8>") #'ri/c-compile-and-run)
 (define-key c-mode-map (kbd "S-<f8>") (lambda () (interactive)
                                         (ri/c-compile-and-run 't)))
 (define-key comint-mode-map (kbd "<f8>") #'quit-window)
 
+
+;;; --- dap-mode: ----
+
+;; (setup (:pkg dap-mode)
+;;  (require 'dap-cpptools)
+;;  (dap-cpptools-setup))
 
 
 (provide 'ri-lang-c-cpp)

@@ -8,7 +8,7 @@
 
 (setup scheme-mode
   (:file-match "\\.sld\\'")
-  (:hook guix-devel-mode))
+  (:hook guix-devel-mode flycheck-mode)) ; in scheme-mode-hook, add these.
 
 (setup (:pkg geiser)
   (setq geiser-default-implementation 'guile)
@@ -17,7 +17,5 @@
 
 (setup (:pkg geiser-guile))
 
-;; Enable flycheck
-(add-hook 'scheme-mode-hook #'flycheck-mode)
-
+(provide 'ri-lang-scheme)
 ;;; ri-lang-scheme.el ends here

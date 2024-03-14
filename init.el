@@ -22,11 +22,16 @@
                              (setq gc-cons-threshold (* 2 1000 1000))))
 
 ;; add modules to load-path
+(defvar ri/load-path-modules nil)
 ;; TODO: recursively add all files from modules, that end with .el?
 ;;  get list of parent dirs for each file and get non-duplicating...
 ;;  Rewrite this with my own func, so can include everything!
-(let ((default-directory (concat user-emacs-directory "modules")))
-  (normal-top-level-add-subdirs-to-load-path))
+(let ((default-directory (concat user-emacs-directory "modules"))
+      (features-pre features)) 
+  (normal-top-level-add-subdirs-to-load-path)
+  (dolist (i features)
+    (unless (member i features-pre)
+      (cl-pushnew i ri/load-path-modules))))
 ;; (add-to-list 'load-path (concat user-emacs-directory "modules"))
 ;; (add-to-list 'load-path (concat user-emacs-directory "modules/pre-init"))
 ;; (add-to-list 'load-path (concat user-emacs-directory "modules/init"))

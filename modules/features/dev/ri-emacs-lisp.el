@@ -14,7 +14,7 @@
 
 ;;; --- Enable Flycheck: ----
 
-(add-hook 'emacs-lisp-mode-hook #'flycheck-mode)
+;; (add-hook 'emacs-lisp-mode-hook #'flycheck-mode)
 
 ;;; --- Prettify Symbols: ----
 

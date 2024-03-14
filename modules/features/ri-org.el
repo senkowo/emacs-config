@@ -13,7 +13,8 @@
   "Should be run when opening new org buffer."
   ;; (variable-pitch-mode 1)
   (visual-line-mode 1) ; wrap lines
-  )
+  (when ri/org-use-variable-pitch-mode
+    (variable-pitch-mode 1)))
 
 (setup org
   (:hook ri/org-buffer-setup)

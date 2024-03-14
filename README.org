@@ -72,4 +72,13 @@ In userside config, =(:ri-disable)= will prevent future setup declaration with s
 
 docview disable line numbers mode
 
-docview disable blink cursor mode
+docview disable blink cursor modee
+
+TODO: create backup bitmap fontface for symbols? tamzen-powerline?
+
+TODO: in stumpwm, startup emacsclient with cmd multi-vterm instance?
+: emacsclient -ce "(multi-vterm)" -a "alacritty"
+
+TODO: in stumpwm, for scratchpad terminal, run emacsclient with standard vterm?
+: emacsclient -ce "(vterm)" -a "emacs"
+do i need to do ~-a "emacs -e '(vterm)'"~ to work?

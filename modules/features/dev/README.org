@@ -1,0 +1,6 @@
+
+
+* To run/eval first:
+
+- tree-sitter
+- lsp

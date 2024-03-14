@@ -9,6 +9,69 @@
 ;;; Code:
 
 (require 'setup)
+
+
+;;; --- Fonts: ----
+;;
+;; Set your fonts here.
+;; These make sure these fonts can be found.
+;; Run this command in terminal to check if font can be found by emacs:
+;; <insert command here>
+;; Alternatively the command "fc-list" and search for the font name.
+;;
+;; Note:
+;; The fonts here other than the default-font don't really do anything
+;; on their own. But in ri-org for example, certain font faces are set to
+;; use the fixed-pitch font instead of the default, and so on...
+;;
+;; Run the following to show all available fonts verbosely:
+;; (x-list-fonts "*" nil frame)
+
+(defvar font-alist
+  '((tamzen-20 . "-Misc-Tamzen-regular-normal-normal-*-20-*-*-*-c-100-iso10646-1")
+    (tamzen-16 . "-Misc-Tamzen-regular-normal-normal-*-16-*-*-*-c-80-iso10646-1")
+    (tamzenPL-16 . "-Misc-TamzenForPowerline-regular-normal-normal-*-16-*-*-*-c-80-iso10646-1")
+    (terminus-16 . "-xos4-Terminus-regular-normal-normal-*-16-*-*-*-c-80-iso10646-1")
+    (spleen-16 . "-misc-Spleen-regular-normal-normal-*-16-*-*-*-m-*-iso10646-1")
+    (terminal-20 . "-dylex-terminal-regular-normal-normal-*-20-*-*-*-c-100-iso10646-1")
+    (unscii-16 . "-Unscii-Unscii-medium-normal-normal-16-16-*-*-*-c-80-iso10646-1")
+    (fixed-16 . "-*-fixed-medium-r-normal-*-16-*-*-*-*-*-fontset-standard")))
+
+;;; Default Font:
+;; typically for regular text, modeline, minibuffer, etc.
+;; TODO: why defvar here????
+;; (set-face-attribute 'default nil :font "Fira Code" :height 110)
+;; (set-face-attribute 'default nil :font "JetBrains Mono" :height 115)
+;; (set-face-attribute 'default nil :font "Hack" :height 110)
+;; (set-face-attribute 'default nil :font "Borg Sans Mono" :height 120) ; old (s/n)
+;; (set-face-attribute 'default nil :font "Hermit" :height 110) ; lain-ish (s/n) ; nice
+;; (set-face-attribute 'default nil :font "Iosevka" :height 120)
+;; (set-face-attribute 'default nil :font "Iosevka Comfy" :height 120) ; gud
+;; (set-face-attribute 'default nil :font "Iosevka Comfy Fixed" :height 120)
+;; Bitmap:
+;; (set-face-attribute 'default nil :font (alist-get 'tamzen-20 font-alist))
+;; (set-face-attribute 'default nil :font (alist-get 'terminal-20 font-alist))
+
+(set-face-attribute 'default nil :font (alist-get 'tamzenPL-16 font-alist))
+;; (set-face-attribute 'default nil :font (alist-get 'terminus-16 font-alist))
+
+;; (set-face-attribute 'default nil :font (alist-get 'spleen-16 font-alist))
+;; (set-face-attribute 'default nil :font (alist-get 'unscii-16 font-alist))
+;; (set-face-attribute 'default nil :font (alist-get 'fixed-16 font-alist))
+
+
+;;; Fixed Pitch Font:
+;; typically for code blocks, org-attributes, etc.
+;; (set-face-attribute 'fixed-pitch nil :font "Fira Code" :height 110)
+(set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :height 110)
+
+;; non-monospaced, typically for org-mode with variable-pitch-mode, etc.
+(defvar variable-pitch-font
+  (set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 125 :weight 'regular))
+
+
+;;; --- Modules: ----
+
 (require 'ri-modules)
 
 ;; This shouldn't be edited unless u know what ur doing.
@@ -17,7 +80,6 @@
   '((require 'ri-theme)
     (require 'ri-basic-ui)
     (require 'ri-basic-func)
-    (require 'ri-def-fonts)
     (require 'ri-qol)))
 (ri/modules-require ri/init-modules)
 
@@ -51,11 +113,22 @@
     (require 'ri-dev-gen)
     (require 'ri-lsp)
     (require 'ri-lang-c-cpp)
+    (require 'ri-lang-cl)
+    (require 'ri-lang-scheme)
+    (require 'ri-lang-rust)
+    (require 'ri-tree-sitter)
     ;; other
     (require 'ri-server)))
 (ri/modules-require ri/general-modules)
 
 ;;; ----- Do whatever you want below: -----
+
+
+;;; --- Fonts: ----
+
+
+(defvar ri/org-use-variable-pitch t
+  "Use variable pitch fonts for org.")
 
 (defvar ri/use-standard-config-modules nil
   "If non-nil, use a generic config of modules below.")
@@ -79,7 +152,6 @@
       '((require 'ri-meow-dvp)
 	(require 'ri-swap-x-and-u)))
     (ri/modules-require ri/lily-specific-modules)))
-
 
 
 

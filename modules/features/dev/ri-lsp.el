@@ -1,26 +1,38 @@
 ;;; ri-lsp --- lsp-mode setup -*- lexical-binding: t; -*-
 
 ;;; Commentary:
+;; 
+;; Make sure clangd is found
 
 ;;; Code:
 
 (require 'setup)
+
+;; variables
+(defvar ri/lsp-prefer-eglot-mode t)
+
+(defun ri/lsp-start-appropriate-server ()
+  (if ri/lsp-prefer-eglot-mode
+      (eglot-ensure)
+    (lsp)))
+
+;;; --- Lsp-mode: ----
 
 (setup (:pkg lsp-mode)
   (:option lsp-headerline-breadcrumb-enable t ; path at top
 	   lsp-keymap-prefix "C-c l"
 	   lsp-clients-clangd-executable (executable-find "clangd")
 	   ;; reduce flashiness
-	   lsp-eldoc-render-all nil ; all info in minibuffer
+	   lsp-eldoc-render-all nil	    ; all info in minibuffer
 	   lsp-enable-symbol-highlighting t ; highlight same symbols
 	   lsp-symbol-highlighting-skip-current t ; ^ dont highlight current symbol
 	   ;;
-	   lsp-inlay-hint-enable nil ; ?
+	   lsp-inlay-hint-enable nil	; ?
 	   ;; fixes yasnippet last bracket behavior
 	   ;; (breaks auto-indent after enter in brackets?)
 	   lsp-enable-relative-indentation t ; t fixes?
 	   )
-  (setq lsp-idle-delay 0.1) ; make mode/context/buffer sensitive
+  (setq lsp-idle-delay 0.1)	  ; make mode/context/buffer sensitive
 
   ;; Enable Flycheck
   (add-hook 'lsp-mode-hook #'flycheck-mode)
@@ -66,6 +78,7 @@
   (company-abort)
   (meow-insert-exit))
 
+;; TODO: add keybind for yas-expand
 (setup (:pkg company)
   ;; TODO: make it so it supports eglot (if i want company on eglot)
   (:hook-into lsp-mode)
@@ -76,7 +89,7 @@
 	   "C-t" company-select-previous-or-abort
 	   "C-<return>" company-select-next
 	   "C-g" ri/abort-company-and-meow-insert-exit
-	   "RET" nil)) ; make RET not complete, only tab
+	   "RET" nil))		     ; make RET not complete, only tab
   (:with-map company-search-map
     (:bind "C-t" company-select-previous-or-abort))
   ;; TODO: implement evil into this.
@@ -99,6 +112,10 @@
 
 (setup compile
   (setq compilation-scroll-output t))
+
+;;; --- Eglot: ----
+
+(setup (:pkg eglot))
 
 
 (provide 'ri-lsp)

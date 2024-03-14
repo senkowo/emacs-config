@@ -21,7 +21,7 @@
                 shell-mode-hook
                 eshell-mode-hook
                 image-minor-mode-hook
-                doc-view-minor-mode-hook
+                doc-view-mode-hook
                 treemacs-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
