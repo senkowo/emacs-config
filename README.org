@@ -3,7 +3,7 @@
 
 /A modular Emacs distribution designed for speed, flexibility, transparency, and ease of configuration./
 
-*  Why did I create this Emacs distribution?
+*  Why another Emacs distribution?
 
 I found that most popular Emacs distros like Doom Emacs are slow, bloated, and too abstracted away for my liking. I wanted to create an Emacs distribution that's very fast, minimal, and transparent, all the while meeting my needs and beyond.
 
