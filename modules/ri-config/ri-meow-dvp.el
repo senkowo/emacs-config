@@ -69,8 +69,8 @@ Set up for dvorak-programmer (dvp) keyboard layout."
    '("b" . meow-back-word)
    '("B" . meow-back-symbol)
    '("c" . meow-change)
-   ;; '("d" . meow-delete)
-   '("d" . ri/meow-delete-or-kill)
+   ;; '("d" . ri/meow-delete-or-kill)
+   '("d" . meow-delete) ; i want "d" to delete char after meow-prev/next-word, so dont use former
    '("D" . meow-backward-delete)
    '("e" . meow-line)
    ;; '("E" . meow-goto-line) ;; removed, since ":" for it works
