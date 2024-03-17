@@ -1,7 +1,7 @@
 #+TITLE: Newmacs config
 (placeholder name (i named it Newmacs because it's new unlike my old config))
 
-*A modular Emacs distribution designed for speed, flexibility, transparency, and ease of configuration.*
+/A modular Emacs distribution designed for speed, flexibility, transparency, and ease of configuration./
 
 *  Why did I create this Emacs distribution?
 
