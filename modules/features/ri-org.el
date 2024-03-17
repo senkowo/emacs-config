@@ -9,10 +9,12 @@
 
 ;;; --- Org basic setup: ----
 
+(defvar ri/org-use-variable-pitch-mode t)
+
 (defun ri/org-buffer-setup ()
   "Should be run when opening new org buffer."
   ;; (variable-pitch-mode 1)
-  (visual-line-mode 1) ; wrap lines
+  (visual-line-mode 1)			; wrap lines
   (when ri/org-use-variable-pitch-mode
     (variable-pitch-mode 1)))
 

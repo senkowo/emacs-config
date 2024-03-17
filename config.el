@@ -66,8 +66,8 @@
 (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :height 110)
 
 ;; non-monospaced, typically for org-mode with variable-pitch-mode, etc.
-(defvar variable-pitch-font
-  (set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 125 :weight 'regular))
+;; (set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 125 :weight 'regular)
+(set-face-attribute 'variable-pitch nil :font "JetBrains Mono" :height 110 :weight 'regular)
 
 
 ;;; --- Modules: ----
