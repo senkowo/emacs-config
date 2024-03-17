@@ -119,9 +119,11 @@
     (require 'ri-tree-sitter)
     ;; other
     (require 'ri-server)))
-(ri/modules-require ri/general-modules)
+(ri/modules-require ri/general-modules) ; TODO: rename to ri/modules-require-list for clarity
 
 ;;; ----- Do whatever you want below: -----
+
+(setq debug-on-error t)
 
 
 ;;; --- Fonts: ----
