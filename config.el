@@ -126,11 +126,10 @@
 (setq debug-on-error t)
 
 
-;;; --- Fonts: ----
-
-
-(defvar ri/org-use-variable-pitch t
-  "Use variable pitch fonts for org.")
+;; TODO: how to show error message with file/location of error, not the parent file (or something).
+(if (featurep 'ri-org)
+    (defvar ri/org-use-variable-pitch t
+      "Use variable pitch fonts for org."))
 
 (defvar ri/use-standard-config-modules nil
   "If non-nil, use a generic config of modules below.")

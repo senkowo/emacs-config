@@ -73,6 +73,7 @@
 ;; of featured and ri-config to make sure it's order-independent.
 ;; TODO: define keyboard layout in var (dvp,qwerty,custom)
 ;; TODO: create macros that does Rest of modules, which can macroexpand.
+;; TODO: running require causes errors to not show location of error...
 
 (require 'ri-modules)
 
