@@ -6,6 +6,11 @@
 
 ;;; Code:
 
+;; TODO: put variables in early-init.el for loading or not loading init.el,
+;;       for a user-specified one instead. Or maybe move all of this elsewhere,
+;;       into a module maybe (except starup hook and gc).
+;; TODO: enable debug-on-error and disable at after-init-hook?
+
 ;; startup time
 (add-hook 'emacs-startup-hook
 	  (lambda ()
