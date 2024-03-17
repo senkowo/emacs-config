@@ -1,12 +1,15 @@
-#+TITLE: Newmacs config
+#+TITLE: Newmacs config (placeholder name (i named it Newmacs because it's new unlike my old config))
 
-A modular Emacs config made for easy and flexible end-user configuration.
+A modular Emacs distribution designed for speed, flexibility, transparency, and ease of configuration.
 
-It is separated into different modules, separated by file.
++ Why did I create this Emacs distribution?
+I found that most popular Emacs distros like Doom Emacs are slow, bloated, and too abstracted away for my liking. I wanted to create an Emacs distribution that's very fast, minimal, and transparent, all the while meeting my needs and beyond. Beyond me simply creating a personal Emacs config that does all of that, I wanted others, including those with very little Emacs experience, to pick up and use my config. I wanted users to be able to start off with a polished experience like that of Doom Emacs, then gradually strip away abstractions and uncessesary features to make it as minimal as desired, while meeting all of their needs. And to those who love having an environment that's as minimal and transparent as possible, instead of Emacs distro-hopping to increasingly more minimal distros, your config can simply be flexibly molded into a more minimal one, all the way to something that's reminicient of vanilla Emacs.
 
-Designed with speed, modularity, and minimalism in mind, it makes reducing your config to only the bare minimum easy.
++ The module system:
+This distribution provides many modules, with each one providing a specific feature. The user has their own config file where they can load any of those modules, allowing one to easily put together a base config that meets their needs without introducing too much bloat.
 
-This project is still very incomplete and under active development.
+
+This project is still very incomplete and under active (procrastinative) development.
 
 * Installation
 
@@ -17,9 +20,9 @@ All this is subject to change.
 
 * Configuration
 
-You can configure which modules are loaded in =config.el=. However, I wouldn't advise configuring it and expecting everything to work when you next run git pull.
+You can configure which modules are loaded in =config.el=. However, I wouldn't advise configuring it and expecting everything to work when you next run git pull. Use at your own risk!!!
 
-* Basic keybinds reference:
+* Basic keybinds reference (might not work based on modules loaded):
 
 - M-o :: other-window
 - SPC :: Meow/Evil leader key (if Meow, =SPC= is basically same as =C-c=)
