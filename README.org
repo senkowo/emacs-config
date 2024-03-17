@@ -1,11 +1,13 @@
 #+TITLE: Newmacs config
 (placeholder name (i named it Newmacs because it's new unlike my old config))
 
-A modular Emacs distribution designed for speed, flexibility, transparency, and ease of configuration.
+*A modular Emacs distribution designed for speed, flexibility, transparency, and ease of configuration.*
 
 *  Why did I create this Emacs distribution?
 
-I found that most popular Emacs distros like Doom Emacs are slow, bloated, and too abstracted away for my liking. I wanted to create an Emacs distribution that's very fast, minimal, and transparent, all the while meeting my needs and beyond. Beyond me simply creating a personal Emacs config that does all of that, I wanted others, including those with very little Emacs experience, to pick up and use my config. I wanted users to be able to start off with a polished experience like that of Doom Emacs, then gradually strip away abstractions and uncessesary features to make it as minimal as desired, while meeting all of their needs. And to those who love having an environment that's as minimal and transparent as possible, instead of Emacs distro-hopping to increasingly more minimal distros, your config can simply be flexibly molded into a more minimal one, all the way to something that's reminicient of vanilla Emacs.
+I found that most popular Emacs distros like Doom Emacs are slow, bloated, and too abstracted away for my liking. I wanted to create an Emacs distribution that's very fast, minimal, and transparent, all the while meeting my needs and beyond.
+Beyond me simply creating a personal Emacs config that does all of that, I wanted others, including those with very little Emacs experience, to pick up and use my config. I wanted users to be able to start off with a polished experience like that of Doom Emacs, then gradually strip away abstractions and uncessesary features to make it as minimal as desired, while still meeting all of their needs.
+And to those who love having an environment that's as minimal and transparent as possible, instead of Emacs-distro-hopping to increasingly more minimal distros, your config can simply be flexibly molded into a more minimal one, all the way to something that's reminicient of vanilla Emacs.
 
 *  The module system:
 
@@ -13,11 +15,10 @@ This distribution provides many modules, with each one providing a specific feat
 
 - [[file:init.el][./init.el]] :: does miscellaneous initial setup, then loads the userside config.
 - [[file:config.el][./config.el]] :: the userside config and is for declaring default fonts, loading your chosen modules, setting variables related to modules, and writing whatever elisp you want. You could try writing your own modules and load them from here, if you like.
-- [[file:modules/][./modules]] :: directory containing a list of directories from which modules will be loaded from.
-  - The default four directories are organized by how/when they are loaded.
-  - [[file:modules/pre-init/][./modules/pre-init]] :: directory containing modules that are run in [[file:init.el][init.el]], and must be run in a specific order.
-  - [[file:modules/init/][./modules/init]] :: directory containing modules that are run in [[file:init.el][init.el]] after the modules in [[file:modules/pre-init/][pre-init]] and can be run in any order.
-  - [[file:modules/features/][./modules/features]] :: directory containing lots of modules that can be loaded from [[file:config.el][config.el]]. This is where you get to freely choose which modules to load. The order does not matter.
+- [[file:modules/][./modules/]] :: directory containing a list of directories from which modules will be loaded from. The default four directories are organized by how/when they are loaded.
+  - [[file:modules/pre-init/][./modules/pre-init/]] :: directory containing modules that are run in [[file:init.el][init.el]], and must be run in a very specific order. These deal with package management and other pivotal features that must be configured first.
+  - [[file:modules/init/][./modules/init/]] :: directory containing modules that are run in [[file:init.el][init.el]] after the modules in [[file:modules/pre-init/][pre-init/]], and can be run in any order, but some may be more preferable. These deal with themes and basic packages that are expected to be installed in many later modules.
+  - [[file:modules/features/][./modules/features/]] :: directory containing lots of modules to be loaded from [[file:config.el][config.el]]. This is where you get to freely choose which modules to load. The order does not matter.
 
 * Note:
 
