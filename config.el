@@ -27,6 +27,8 @@
 ;; Run the following to show all available fonts verbosely:
 ;; (x-list-fonts "*" nil frame)
 
+;; TODO: test what happens if no fonts are set by default.
+
 (defvar font-alist
   '((tamzen-20 . "-Misc-Tamzen-regular-normal-normal-*-20-*-*-*-c-100-iso10646-1")
     (tamzen-16 . "-Misc-Tamzen-regular-normal-normal-*-16-*-*-*-c-80-iso10646-1")
@@ -63,11 +65,12 @@
 ;;; Fixed Pitch Font:
 ;; typically for code blocks, org-attributes, etc.
 ;; (set-face-attribute 'fixed-pitch nil :font "Fira Code" :height 110)
-(set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :height 110)
+;; (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :height 110)
 
-;; non-monospaced, typically for org-mode with variable-pitch-mode, etc.
+;;; Variable Pitch Font:
 ;; (set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 125 :weight 'regular)
-(set-face-attribute 'variable-pitch nil :font "JetBrains Mono" :height 110 :weight 'regular)
+;; (set-face-attribute 'variable-pitch nil :font "JetBrains Mono" :height 110 :weight 'regular)
+(set-face-attribute 'variable-pitch nil :font "Hack" :height 110)
 
 
 ;;; --- Modules: ----
@@ -115,15 +118,19 @@
     (require 'ri-lang-c-cpp)
     (require 'ri-lang-cl)
     (require 'ri-lang-scheme)
-    (require 'ri-lang-rust)
     (require 'ri-tree-sitter)
+    (require 'ri-lang-rust)
     ;; other
-    (require 'ri-server)))
+    (require 'ri-server)
+    ;; misc
+    (require 'ri-rest) ; temp
+    ))
 (ri/modules-require ri/general-modules) ; TODO: rename to ri/modules-require-list for clarity
 
 ;;; ----- Do whatever you want below: -----
 
-(setq debug-on-error t)
+;; TODO: add to docs, to enable debug-on-error for debugging or --init-debug
+;; (setq debug-on-error t) ; errors when ) end of list
 
 
 ;; TODO: how to show error message with file/location of error, not the parent file (or something).
