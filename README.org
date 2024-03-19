@@ -24,7 +24,9 @@ This distribution provides many modules, with each one providing a specific feat
 
 * Note:
 
-This project is still very incomplete and under active (procrastinative) development.
+This project is still very incomplete and under +active+ (procrastinative) development.
+
+At its current state, the default config has keybinds designed for dvorak-programmer.
 
 * Installation
 
@@ -53,16 +55,15 @@ You can configure which modules are loaded in =config.el=. However, I wouldn't a
 - [ ] crux
 - [ ] free-keys
 - [ ] better window management
-- [ ] ivy config
 - [ ] better ivy
 - [ ] info
 - [ ] darkroom
 - [ ] calc
-- [ ] dired/dirvish improve keybinds
+- [ ] improve dired/dirvish keybinds
 - [ ] improve keybinds for everything
-- [ ] stumpwm
+- [ ] stumpwm-mode
 - [ ] ALL of org and related stuff
-- [ ] LSP, ide, languages
+- [ ] polish LSP, ide, languages
 - [ ] crdt
 - [ ] eshell
 - [ ] sudo edit
