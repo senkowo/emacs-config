@@ -1,0 +1,89 @@
+#+title: modules => features
+
+* TO ADD:
+
+- ri-lang-terraform
+- ri-lang-markdown
+- ri-lang-web
+- ri-transparency
+- ri-info
+- ri-writer (darkroom?)
+- ri-tramp
+- ri-social (before running, set vars:
+  : (progn
+  :   (ri-disable-except "ri-social.el"
+  :     '("w3m" "gnus" "ement" "erc" "elfeed"))
+  :   (require 'ri-social))
+  )
+  + Have a global setup setting where if current file's basename matches and also in list, do (:ri-disable), and inverse of that if in ri-disable-except.
+- ri-eshell
+- ri-completion
+  https://github.com/minad/tempel (or similar alternative (for custom completion scripts)
+
+- free-keys
+
+* General:
+
+** ri-buffers
+
+** ri-completion-ivy
+
+** ri-core
+
+** ri-dired
+
+** ri-dirvish
+
+** ri-evil-keys
+
+** ri-fun
+
+** ri-guix
+
+** ri-line-numbers
+
+** ri-meow-gen
+
+** ri-modeline
+
+** ri-org
+
+** ri-pretty
+
+** ri-qol2
+
+** ri-server
+
+** ri-terminal
+
+** ri-tools
+
+** ri-transparency
+
+** ri-windows
+
+* Dev
+
+** ri-dev-gen
+
+** ri-emacs-lisp
+
+** ri-lang-c-cpp
+
+** ri-lang-cl
+
+** ri-lang-rust
+
+** ri-lang-scheme
+
+** ri-lang-yaml
+
+** ri-lisp-adv
+
+** ri-lisp-gen
+
+** ri-lsp
+
+** ri-magit
+
+** ri-tree-sitter

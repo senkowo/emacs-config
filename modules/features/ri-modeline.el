@@ -24,13 +24,14 @@
 
 ;;; --- Mood-line: ----
 
+;; TODO: increase size by just a little.
 (setup (:pkg mood-line)
   ;; initialize before config
   (mood-line-mode 1)
 
   ;; prettify symbols?
-  (setq mood-line-glyph-alist mood-line-glyphs-ascii)
-  ;; (setq mood-line-glyph-alist mood-line-glyphs-fira-code)
+  ;; (setq mood-line-glyph-alist mood-line-glyphs-ascii)
+  (setq mood-line-glyph-alist mood-line-glyphs-fira-code) ; TODO: depends on fira-code
   ;; (setq mood-line-glyph-alist mood-line-glyphs-unicode)
 
   ;; format? amount of detail?
