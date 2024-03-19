@@ -9,7 +9,7 @@
 (require 'setup)
 
 ;; variables
-(defvar ri/lsp-prefer-eglot-mode t)
+(defvar ri/lsp-prefer-eglot-mode nil)
 
 (defun ri/lsp-start-appropriate-server ()
   (if ri/lsp-prefer-eglot-mode
@@ -97,6 +97,9 @@
 
 ;;; --- YASnippet: ----
 
+;; TODO: fix issue with C yasnippet vs lsp completion different.
+;; TODO: yasnippet completion
+
 (setup (:pkg yasnippet)
   (require 'yasnippet)
   (add-hook 'prog-mode-hook #'yas-minor-mode)
@@ -120,3 +123,5 @@
 
 (provide 'ri-lsp)
 ;;; ri-lsp.el ends here
+
+

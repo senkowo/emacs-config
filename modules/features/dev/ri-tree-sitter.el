@@ -2,21 +2,31 @@
 
 ;;; Commentary:
 ;; More info: https://emacs-tree-sitter.github.io/
+;; https://github.com/emacs-tree-sitter/elisp-tree-sitter
 
 ;;; Code:
 
-(unless (functionp 'module-load)
-  (error "Emacs needs to be built with dynamic module support for tree-sitter"))
+;; (unless (functionp 'module-load)
+;;   (error "Emacs needs to be built with dynamic module support for tree-sitter"))
 
-(setup (:pkg tree-sitter)
-  ;; get langs
-  (setup (:pkg tree-sitter-langs)
-    (require 'tree-sitter-langs))
-  
-  (require 'tree-sitter)
-  (global-tree-sitter-mode 1)
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+;; Hack to get treesit to work properly:
+;; https://github.com/renzmann/treesit-auto
+;; (hack may become obsolete in Emacs 30)
+(setup (:pkg treesit-auto)
+  (require 'treesit-auto)
+  (setq treesit-auto-install 'prompt)
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode 1))
 
+;; Original method (has issues with rust-mode):
+
+;; (setup (:pkg tree-sitter)
+;;   (require 'tree-sitter))
+;; (setup (:pkg tree-sitter-langs)
+;;   (:load-after tree-sitter)
+;;   (require 'tree-sitter-langs)
+;;   (global-tree-sitter-mode 1)
+;;   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
 
 (provide 'ri-tree-sitter)
