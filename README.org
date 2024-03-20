@@ -1,5 +1,6 @@
 #+TITLE: Newmacs config
 (placeholder name (i named it Newmacs because it's new unlike my old config))
+
 Name ideas:
 - cdrmacs
 - xrdg
