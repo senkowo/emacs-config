@@ -42,7 +42,7 @@ At its current state, the default config has keybinds designed for dvorak-progra
 * Installation
 
 To use this config without eradicating your pre-existing =~/.emacs.d=, you may git clone the project anywhere, and then run =$ emacs --init-directory <path-to-repo>= to run emacs from that directory. 
-Because meow with dvorak-programmer is the default, run the previous command with the argument =--sane-keybinds= to load qwerty meow keybinds.
+Because meow with dvorak-programmer is the default, run the previous command with the argument =--sane-keybinds= to load qwerty meow keybinds (temporary feature so others can easily try out my config).
 
 All this is subject to change.
 
