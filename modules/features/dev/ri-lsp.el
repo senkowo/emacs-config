@@ -18,7 +18,10 @@
 
 ;;; --- Lsp-mode: ----
 
+(defvar ri/lsp-after-pkg-load-hook nil)
+
 (setup (:pkg lsp-mode)
+  ;; (require 'lsp-mode)
   (:option lsp-headerline-breadcrumb-enable t ; path at top
 	   lsp-keymap-prefix "C-c l"
 	   lsp-clients-clangd-executable (executable-find "clangd")
@@ -32,7 +35,7 @@
 	   ;; (breaks auto-indent after enter in brackets?)
 	   lsp-enable-relative-indentation t ; t fixes?
 	   )
-  (setq lsp-idle-delay 0.1)	  ; make mode/context/buffer sensitive
+  (setq lsp-idle-delay 0.1)	  ; TODO: make mode/context/buffer sensitive (make alist?)
 
   ;; Enable Flycheck
   (add-hook 'lsp-mode-hook #'flycheck-mode)
@@ -42,7 +45,10 @@
     ;; to get Meow space to work...
     ;; (maybe bc lsp is not deferred and run before meow?)
     (global-set-key (kbd "C-c l") lsp-command-map)
-    (lsp-enable-which-key-integration 1))
+    (lsp-enable-which-key-integration 1)
+    ;; Eval custom hook:
+    (run-hooks 'ri/lsp-after-pkg-load-hook)
+    )
 
   (leader-key-def
     "l" '(:ignore t :which-key "lsp")
@@ -82,7 +88,7 @@
 (setup (:pkg company)
   ;; TODO: make it so it supports eglot (if i want company on eglot)
   (:hook-into lsp-mode)
-  (:option company-minimum-prefix-length 1
+  (:option company-minimum-prefix-length 2
 	   company-idle-delay 0.1)
   (:with-map company-active-map
     (:bind "<tab>" company-complete-selection
@@ -92,6 +98,17 @@
 	   "RET" nil))		     ; make RET not complete, only tab
   (:with-map company-search-map
     (:bind "C-t" company-select-previous-or-abort))
+
+  ;; Use yasnippet as secondary company backend when lsp-mode is loaded:
+  (defun ri/company-yasnippet-lsp-mode-config ()
+    (setq lsp-completion-provider :none)
+    (defun ri/company-lsp-backends ()
+      (setq company-backends
+	    '((company-capf :with company-yasnippet))))
+    (add-hook 'lsp-mode-hook #'ri/company-lsp-backends))
+  (add-hook 'ri/lsp-after-pkg-load-hook #'ri/company-yasnippet-lsp-mode-config)
+  ;; (ri/run-func-if-feature-loaded 'lsp-mode #'ri/company-yasnippet-lsp-mode-config)
+
   ;; TODO: implement evil into this.
   )
 
@@ -103,7 +120,10 @@
 (setup (:pkg yasnippet)
   (require 'yasnippet)
   (add-hook 'prog-mode-hook #'yas-minor-mode)
-  (yas-reload-all))
+  (yas-reload-all)
+  ;; TODO: if company installed,
+  (define-key yas-keymap (kbd "C-<tab>") 'yas-next-field)
+  )
 
 (setup (:pkg yasnippet-snippets))
 

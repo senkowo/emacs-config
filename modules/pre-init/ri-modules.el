@@ -53,6 +53,30 @@ More to be added..."
 		  list-or-type))
     (t (error "Type not valid"))))
 
+
+;;; --- Eval function after init if package exists
+
+(defun ri/run-func-after-init (my-func)
+  "Once Emacs is initialized, eval MY-FUNC.
+If ran during Emacs initialization, evaluate in after-init-hook.
+If already initialized, evaluate now."
+  (if after-init-time
+      (funcall my-func)
+    (add-hook 'after-init-hook my-func)))
+
+(defun ri/run-func-if-feature-loaded (my-feat my-func)
+  "Once Emacs is initialized, evals MY-FUNC if FEATURE is loaded.
+If ran during Emacs initialization, evaluate in after-init-hook.
+If already initialized, evaluate now."
+  (cond (after-init-time
+	 (if (featurep my-feat)
+	     (funcall my-func)))
+	(t
+	 (add-hook 'after-init-hook
+		   (lambda ()
+		     (if (featurep my-feat)
+			 (funcall my-func)))))))
+
 ;;; --- End: ----
 
 (provide 'ri-modules)
