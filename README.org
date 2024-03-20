@@ -73,6 +73,11 @@ You can configure which modules are loaded in =config.el=. However, I wouldn't a
 
 * Notes to self:
 
+Cool keybinds to write down:
+- M-/ :: dabbrev-expand
+- C-M-/ :: dabbrev-completion
+- C-M-i (C-M-- if dvorak) :: complete-symbol
+  
 (override-module 'ri-meow-gen)
 ;; module not found
 ;; run before load modules?
