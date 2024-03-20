@@ -19,6 +19,8 @@
 - ri-eshell
 - ri-completion
   https://github.com/minad/tempel (or similar alternative (for custom completion scripts)
+- ri-icalendar
+  https://www.reddit.com/r/emacs/comments/ioenk2/ical_import_in_emacs_calendar/
 
 - free-keys
 

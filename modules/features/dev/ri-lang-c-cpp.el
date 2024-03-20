@@ -7,10 +7,12 @@
 (require 'setup)
 
 ;; TODO: make the hook run either lsp or eglot depending on pref
+;; TODO: make only eval if lsp is installed
 (setup c-mode
   (require 'cc-mode)
   ;; TODO: does this work?
   (:hook lsp))
+
 
 ;;; --- My C compile command: ----
 
@@ -19,7 +21,7 @@
   "Save the current buffer, compile, and run the C file.
 USE-EXTRA will be added to the list of parameters of the run command."
   (interactive)
-  (unless (or (eq major-mode 'c-mode) (eq major-mode 'comint-mode))
+  (unless (or (eq major-mode 'c-mode) (eq major-mode 'comint-mode) (eq major-mode 'c-ts-mode))
     (error "not in c-mode or comint-mode!"))
   (let* ((main (file-name-nondirectory (buffer-file-name)))
          (exe (file-name-sans-extension main))
@@ -69,10 +71,22 @@ USE-EXTRA will be added to the list of parameters of the run command."
                 (meow-insert-mode)))
         (progn
           (message "%s" "could not find compilation buffer!"))))))
+
 (define-key c-mode-map (kbd "<f8>") #'ri/c-compile-and-run)
 (define-key c-mode-map (kbd "S-<f8>") (lambda () (interactive)
                                         (ri/c-compile-and-run 't)))
 (define-key comint-mode-map (kbd "<f8>") #'quit-window)
+
+;; TODO: if tree-sitter is installed, appropriate keybinds
+(defun ri/c-treesit-accomidations ()
+  (define-key c-ts-mode-map (kbd "<f8>") #'ri/c-compile-and-run)
+  (define-key c-ts-mode-map (kbd "S-<f8>") (lambda () (interactive)
+                                             (ri/c-compile-and-run 't)))
+  (setup c-ts-mode
+    (require 'cc-mode)
+    ;; TODO: better way? auto choose best lsp?
+    (:hook lsp)))
+(ri/run-func-if-feature-loaded 'treesit #'ri/c-treesit-accomidations)
 
 
 ;;; --- dap-mode: ----

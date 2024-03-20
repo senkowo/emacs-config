@@ -1,6 +1,9 @@
 ;;; ri-fun --- fun random stuff -*- lexical-binding: t; -*-
 
 ;;; Commentary:
+;; 
+;; parrots - https://github.com/dp12/parrot
+;;
 
 ;;; Code:
 

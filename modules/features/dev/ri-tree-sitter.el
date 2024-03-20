@@ -4,6 +4,8 @@
 ;; More info: https://emacs-tree-sitter.github.io/
 ;; https://github.com/emacs-tree-sitter/elisp-tree-sitter
 
+;; TODO: NOTE: treesitter uses different modes than original (e.g. c-mode-hook -> c-ts-mode-hook)
+
 ;;; Code:
 
 ;; (unless (functionp 'module-load)
@@ -12,6 +14,7 @@
 ;; Hack to get treesit to work properly:
 ;; https://github.com/renzmann/treesit-auto
 ;; (hack may become obsolete in Emacs 30)
+;; If missing language grammars, run treesit-auto-install-all.
 (setup (:pkg treesit-auto)
   (require 'treesit-auto)
   (setq treesit-auto-install 'prompt)
