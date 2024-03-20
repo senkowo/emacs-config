@@ -1,4 +1,5 @@
 #+TITLE: Newmacs config
+
 (placeholder name (i named it Newmacs because it's new unlike my old config))
 
 Name ideas:
@@ -17,7 +18,7 @@ Name ideas:
 
 I found that most popular Emacs distros like Doom Emacs are slow, bloated, and too abstracted away for my liking. I wanted to create an Emacs distribution that's very fast, minimal, and transparent, all the while meeting my needs and beyond.
 
-Beyond me simply creating a personal Emacs config that does all of that, I wanted others, including those with very little Emacs experience, to be able to pick up and use my config. I wanted users to be able to start off with a polished experience like that of Doom Emacs, then gradually strip away abstractions and uncessesary features to make it as minimal as desired, while still meeting all of their needs.
+And beyond me simply creating a personal Emacs config that does all of that, I wanted others, including those with very little Emacs experience, to be able to pick up and use my config. I wanted users to be able to start off with a polished experience like that of Doom Emacs, then gradually strip away abstractions and uncessesary features to make it as minimal as desired, while still meeting all of their needs.
 
 And to those who love having an environment that's as minimal and transparent as possible, instead of Emacs distro-hopping to increasingly more minimal distros, your config can simply be flexibly molded into a more minimal one, all the way to something that's akin to vanilla Emacs.
 
