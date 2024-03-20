@@ -7,3 +7,5 @@ eln-cache/
 elpa/
 eshell/history
 eshell/lastdir
+
+tree-sitter/

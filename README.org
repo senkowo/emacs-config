@@ -1,5 +1,14 @@
 #+TITLE: Newmacs config
 (placeholder name (i named it Newmacs because it's new unlike my old config))
+Name ideas:
+- cdrmacs
+- xrdg
+- ri-macs
+- rin-emacs
+- Xmodmacs
+- windowmacs
+- terramacs
+- (these are all mid....)
 
 /A modular Emacs distribution designed for speed, flexibility, transparency, and ease of configuration./
 
