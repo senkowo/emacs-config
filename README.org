@@ -117,3 +117,41 @@ TODO: in stumpwm, startup emacsclient with cmd multi-vterm instance?
 TODO: in stumpwm, for scratchpad terminal, run emacsclient with standard vterm?
 : emacsclient -ce "(vterm)" -a "emacs"
 do i need to do ~-a "emacs -e '(vterm)'"~ to work?
+
+ri-lsp--depend <- pulled by both ri-lsp-mode and ri-lsp-eglot ?
+
++(require 'ri-lsp-mode)+
+(ri/require-incl-setups 'ri-lsp-mode '("lsp-mode" "flycheck" "company")
+(ri/require-excl-setups 'ri-lsp-mode '("lsp-ui" "yasnippet")
+- will need to modify setup macro.
+  Vars ri/require--to-incl and ri/require--to-excl, both nil by def.
+  Make it so for every setup macro, if either vars are non-nil,
+   print message and abort.
+  function ri/require-....-setups (TO-REQ LIST):
+    fill appropriate var to LIST
+    (require TO-REQ)
+    set appropriate var to nil
+  end of fun;
+
+For bitmap fonts, create custom backup italic face.
+
+Keep yas-minor-mode enabled, but disable TAB to randomly complete at point
+
+dired sort by file size (or any value)
+
+SPC-SPC error, commandp 1 (fix?)
+
+for stumpwm, notifs, make persisting, or at least cmd to show last few notifs
+
+create a script that plays random media in a dir with mpv
+
+Switch to ratpoison and script it with Emacs or guile following system crafters tutorial
+
+set up org-roam for stats and bio classes (everything in there) (follow bookmarked tutorials)
+
+add whatever everything in config.el after init part, will later convert to modules maybe.
+(require-module 'ri-org) for less verbose shortcut, inline with misc config.el configs down
+
+post-system fix:
+make sure to daily btrfs snapshot
+

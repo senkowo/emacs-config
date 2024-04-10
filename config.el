@@ -29,6 +29,8 @@
 
 ;; TODO: test what happens if no fonts are set by default.
 
+;; TODO: italics for bitmap fonts
+
 (defvar font-alist
   '((tamzen-20 . "-Misc-Tamzen-regular-normal-normal-*-20-*-*-*-c-100-iso10646-1")
     (tamzen-16 . "-Misc-Tamzen-regular-normal-normal-*-16-*-*-*-c-80-iso10646-1")
@@ -42,7 +44,7 @@
 ;;; Default Font:
 ;; typically for regular text, modeline, minibuffer, etc.
 ;; TODO: why defvar here????
-;; (set-face-attribute 'default nil :font "Fira Code" :height 110)
+(set-face-attribute 'default nil :font "Fira Code" :height 110)
 ;; (set-face-attribute 'default nil :font "JetBrains Mono" :height 115)
 ;; (set-face-attribute 'default nil :font "Hack" :height 110)
 ;; (set-face-attribute 'default nil :font "Borg Sans Mono" :height 120) ; old (s/n)
@@ -54,12 +56,15 @@
 ;; (set-face-attribute 'default nil :font (alist-get 'tamzen-20 font-alist))
 ;; (set-face-attribute 'default nil :font (alist-get 'terminal-20 font-alist))
 
-(set-face-attribute 'default nil :font (alist-get 'tamzenPL-16 font-alist))
+;; DOESNT WORK (set-face-attribute 'default nil :font (alist-get 'tamzenPL-16 font-alist))
 ;; (set-face-attribute 'default nil :font (alist-get 'terminus-16 font-alist))
 
 ;; (set-face-attribute 'default nil :font (alist-get 'spleen-16 font-alist))
 ;; (set-face-attribute 'default nil :font (alist-get 'unscii-16 font-alist))
 ;; (set-face-attribute 'default nil :font (alist-get 'fixed-16 font-alist))
+
+;;; Bitmap italic exception:
+(set-face-attribute 'italic nil :font "Hack")
 
 
 ;;; Fixed Pitch Font:
@@ -70,7 +75,7 @@
 ;;; Variable Pitch Font:
 ;; (set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 125 :weight 'regular)
 ;; (set-face-attribute 'variable-pitch nil :font "JetBrains Mono" :height 110 :weight 'regular)
-(set-face-attribute 'variable-pitch nil :font "Hack" :height 110)
+(set-face-attribute 'variable-pitch nil :font "Fira Code" :height 110)
 
 
 ;;; --- Modules: ----
@@ -118,7 +123,7 @@
     (require 'ri-lang-c-cpp)
     (require 'ri-lang-cl)
     (require 'ri-lang-scheme)
-    (require 'ri-tree-sitter)
+    ;; (require 'ri-tree-sitter) ; broken rust comments
     (require 'ri-lang-rust)
     ;; other
     (require 'ri-server)

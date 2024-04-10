@@ -79,13 +79,14 @@ USE-EXTRA will be added to the list of parameters of the run command."
 
 ;; TODO: if tree-sitter is installed, appropriate keybinds
 (defun ri/c-treesit-accomidations ()
-  (define-key c-ts-mode-map (kbd "<f8>") #'ri/c-compile-and-run)
-  (define-key c-ts-mode-map (kbd "S-<f8>") (lambda () (interactive)
-                                             (ri/c-compile-and-run 't)))
   (setup c-ts-mode
     (require 'cc-mode)
     ;; TODO: better way? auto choose best lsp?
-    (:hook lsp)))
+    (:hook lsp)
+    ;; (define-key c-ts-mode-map (kbd "<f8>") #'ri/c-compile-and-run) 
+    ;; (define-key c-ts-mode-map (kbd "S-<f8>") (lambda () (interactive)
+    ;;                                            (ri/c-compile-and-run 't)))
+    ))
 (ri/run-func-if-feature-loaded 'treesit #'ri/c-treesit-accomidations)
 
 

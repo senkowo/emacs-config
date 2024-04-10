@@ -85,10 +85,12 @@
   (meow-insert-exit))
 
 ;; TODO: add keybind for yas-expand
+;; TODO: fix order, complete var names before functions if match. Company order? dont use :with?
+
 (setup (:pkg company)
   ;; TODO: make it so it supports eglot (if i want company on eglot)
   (:hook-into lsp-mode)
-  (:option company-minimum-prefix-length 2
+  (:option company-minimum-prefix-length 1
 	   company-idle-delay 0.1)
   (:with-map company-active-map
     (:bind "<tab>" company-complete-selection
@@ -104,7 +106,10 @@
     (setq lsp-completion-provider :none)
     (defun ri/company-lsp-backends ()
       (setq company-backends
-	    '((company-capf :with company-yasnippet))))
+	    '((company-capf :with company-files :with company-yasnippet)))
+      ;; (setq company-backends
+      ;; 	    '((company-capf)))
+      )
     (add-hook 'lsp-mode-hook #'ri/company-lsp-backends))
   (add-hook 'ri/lsp-after-pkg-load-hook #'ri/company-yasnippet-lsp-mode-config)
   ;; (ri/run-func-if-feature-loaded 'lsp-mode #'ri/company-yasnippet-lsp-mode-config)
