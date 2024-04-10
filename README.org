@@ -155,3 +155,4 @@ add whatever everything in config.el after init part, will later convert to modu
 post-system fix:
 make sure to daily btrfs snapshot
 
+notice that there's a lot of user-related stuff in init.el (is-guix, etc...). move these to user-side, gradually make it more separate between default init.el and user config, all the while adding more random stuff to the end of config.el to make into defined user-side stuff.
