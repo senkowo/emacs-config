@@ -89,48 +89,46 @@
     (require 'ri-basic-ui)
     (require 'ri-basic-func)
     (require 'ri-qol)))
-(ri/modules-require ri/init-modules)
+(ri/modules-require ri/init-modules) ; TODO: rename to ri/modules-require-list for clarity
 
-;; List of modules to load. The order of modules shouldn't matter.
-(defvar ri/general-modules
-  '(;; general
-    (require 'ri-line-numbers)
-    (require 'ri-core)			; empty right now
-    (require 'ri-org)
-    (require 'ri-transparency)
-    (require 'ri-meow-gen)		; T
-    ;; (require 'ri-evil-keys) ; T
-    (require 'ri-windows)
-    (require 'ri-buffers)
-    (require 'ri-tools)
-    (require 'ri-modeline)
-    (require 'ri-qol2)
-    (require 'ri-completion-ivy)
-    (require 'ri-pretty)
-    (require 'ri-fun)
-    (require 'ri-guix)
-    (require 'ri-terminal)
-    (require 'ri-dired)
-    (require 'ri-dirvish)
+;;; List of modules to load. The order of modules shouldn't matter.
 
-    ;; dev
-    (require 'ri-magit)
-    (require 'ri-emacs-lisp)
-    (require 'ri-lisp-gen)
-    (require 'ri-lisp-adv)
-    (require 'ri-dev-gen)
-    (require 'ri-lsp)
-    (require 'ri-lang-c-cpp)
-    (require 'ri-lang-cl)
-    (require 'ri-lang-scheme)
-    ;; (require 'ri-tree-sitter) ; broken rust comments
-    (require 'ri-lang-rust)
-    ;; other
-    (require 'ri-server)
-    ;; misc
-    (require 'ri-rest) ; temp
-    ))
-(ri/modules-require ri/general-modules) ; TODO: rename to ri/modules-require-list for clarity
+;; general
+(require 'ri-line-numbers)
+(require 'ri-core)			; empty right now
+(require 'ri-org)
+(require 'ri-transparency)
+(require 'ri-meow-gen)		; T
+;; (require 'ri-evil-keys) ; T
+(require 'ri-windows)
+(require 'ri-buffers)
+(require 'ri-tools)
+(require 'ri-modeline)
+(require 'ri-qol2)
+(require 'ri-completion-ivy)
+(require 'ri-pretty)
+(require 'ri-fun)
+(require 'ri-guix)
+(require 'ri-terminal)
+(require 'ri-dired)
+(require 'ri-dirvish)
+
+;; dev
+(require 'ri-magit)
+(require 'ri-emacs-lisp)
+(require 'ri-lisp-gen)
+(require 'ri-lisp-adv)
+(require 'ri-dev-gen)
+(require 'ri-lsp)
+(require 'ri-lang-c-cpp)
+(require 'ri-lang-cl)
+(require 'ri-lang-scheme)
+;; (require 'ri-tree-sitter) ; broken rust comments
+(require 'ri-lang-rust)
+;; other
+(require 'ri-server)
+;; misc
+(require 'ri-rest) ; temp
 
 ;;; ----- Do whatever you want below: -----
 
