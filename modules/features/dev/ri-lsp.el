@@ -106,7 +106,7 @@
     (setq lsp-completion-provider :none)
     (defun ri/company-lsp-backends ()
       (setq company-backends
-	    '((company-capf :with company-files :with company-yasnippet)))
+	    '((company-capf :with company-yasnippet)))
       ;; (setq company-backends
       ;; 	    '((company-capf)))
       )

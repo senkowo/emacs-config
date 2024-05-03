@@ -156,3 +156,12 @@ post-system fix:
 make sure to daily btrfs snapshot
 
 notice that there's a lot of user-related stuff in init.el (is-guix, etc...). move these to user-side, gradually make it more separate between default init.el and user config, all the while adding more random stuff to the end of config.el to make into defined user-side stuff.
+
+use #'load or use-package with path to local repo for each module:
+e.g.: https://github.com/countvajhula/.emacs.d/blob/master/init.el
+
+straight-normalize-all vs straight-pull-all
+https://github.com/radian-software/straight.el?tab=readme-ov-file#version-control-operations
+
+switch to use-package? (if yes, don't ever use :ensure, and use :require if required).
+

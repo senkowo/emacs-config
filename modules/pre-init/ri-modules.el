@@ -12,16 +12,24 @@
 ;; TODO: is this necessary?
 
 (defvar ri/modules-pre-init-list
-  '((require 'ri-package)
-    (require 'ri-setup)
-    (require 'ri-pivotal)))
+  ;; '((require 'ri-package)
+  ;;   (require 'ri-setup)
+  ;;   (require 'ri-pivotal))
+  '((ri/load "ri-package")
+    (ri/load "ri-setup")
+    (ri/load "ri-pivotal")))
 
 (defvar ri/modules-init-list
-  '((require 'ri-theme)
-    (require 'ri-basic-ui)
-    (require 'ri-basic-func)
-    (require 'ri-def-fonts)
-    (require 'ri-qol)))
+  ;; '((require 'ri-theme)
+  ;;   (require 'ri-basic-ui)
+  ;;   (require 'ri-basic-func)
+  ;;   (require 'ri-def-fonts)
+  ;;   (require 'ri-qol))
+  '((ri/load "ri-theme")
+    (ri/load "ri-basic-ui")
+    (ri/load "ri-basic-func")
+    (ri/load "ri-def-fonts")
+    (ri/load "ri-qol")))
 
 ;; (defvar ri/modules-features-list
 ;;   (mapcar ))
@@ -41,6 +49,7 @@ Symbols:
 - features -> `ri/modules-features-list'
 
 More to be added..."
+  (message "DEBUG: REMOVE THIS")
   (cl-typecase list-or-type
     (atom (ri/modules-require		; TODO: what. recursion...?
 	   (pcase 'pre-init
@@ -49,10 +58,31 @@ More to be added..."
     (list (mapcar (lambda (cmd)
 		    (benchmark-progn
 		      (eval cmd))
-		    (message "  loaded %s" (nth 1 cmd)))
+		    ;; (message "  loaded %s" (nth 1 cmd))
+		    )
 		  list-or-type))
     (t (error "Type not valid"))))
 
+
+
+
+(defmacro ri/load (&rest modules)
+  `(progn
+     ,@(mapcar (lambda (arg)
+		 ;; for every arg passed to macro, if arg is a variable
+		 ;; name, 
+		 (cl-typecase arg
+		   (string `(progn
+			      (benchmark-progn
+				(load ,arg))
+			      ;; (message "  loaded %s" ,arg)
+			      ))
+		   (atom `(progn
+			    ,@(mapcar (lambda (exp)
+					exp)
+				      (symbol-value arg))))
+		   (t (error "invalid type: %s" arg))))
+	       modules)))
 
 ;;; --- Eval function after init if package exists
 

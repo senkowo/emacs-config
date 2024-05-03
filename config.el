@@ -69,7 +69,7 @@
 
 ;;; Fixed Pitch Font:
 ;; typically for code blocks, org-attributes, etc.
-;; (set-face-attribute 'fixed-pitch nil :font "Fira Code" :height 110)
+(set-face-attribute 'fixed-pitch nil :font "Fira Code" :height 110)
 ;; (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :height 110)
 
 ;;; Variable Pitch Font:
@@ -80,55 +80,61 @@
 
 ;;; --- Modules: ----
 
-(require 'ri-modules)
+;; (require 'ri-modules)
+;; (load "ri-modules")
 
 ;; This shouldn't be edited unless u know what ur doing.
 ;; (must be in this order
 (defvar ri/init-modules
-  '((require 'ri-theme)
-    (require 'ri-basic-ui)
-    (require 'ri-basic-func)
-    (require 'ri-qol)))
-(ri/modules-require ri/init-modules) ; TODO: rename to ri/modules-require-list for clarity
+  '((ri/load "ri-theme")
+    (ri/load "ri-basic-ui")
+    (ri/load "ri-basic-func")
+    (ri/load "ri-qol")))
+(ri/load ri/init-modules) ; TODO: rename to ri/modules-require-list for clarity
 
 ;;; List of modules to load. The order of modules shouldn't matter.
 
 ;; general
-(require 'ri-line-numbers)
-(require 'ri-core)			; empty right now
-(require 'ri-org)
-(require 'ri-transparency)
-(require 'ri-meow-gen)		; T
+
+
+;; TODO: replace all these with #'load, or a function that individually processes each string and loads, with timestamps and shit.
+
+
+(ri/load "ri-line-numbers")
+(ri/load "ri-core")			; empty right now
+(ri/load "ri-org")
+(ri/load "ri-transparency")
+(ri/load "ri-meow-gen")		; T
 ;; (require 'ri-evil-keys) ; T
-(require 'ri-windows)
-(require 'ri-buffers)
-(require 'ri-tools)
-(require 'ri-modeline)
-(require 'ri-qol2)
-(require 'ri-completion-ivy)
-(require 'ri-pretty)
-(require 'ri-fun)
-(require 'ri-guix)
-(require 'ri-terminal)
-(require 'ri-dired)
-(require 'ri-dirvish)
+(ri/load "ri-windows")
+(ri/load "ri-buffers")
+(ri/load "ri-tools")
+(ri/load "ri-modeline")
+(ri/load "ri-qol2")
+(ri/load "ri-completion-ivy")
+(ri/load "ri-pretty")
+(ri/load "ri-fun")
+(ri/load "ri-guix")
+(ri/load "ri-terminal")
+(ri/load "ri-dired")
+(ri/load "ri-dirvish")
 
 ;; dev
-(require 'ri-magit)
-(require 'ri-emacs-lisp)
-(require 'ri-lisp-gen)
-(require 'ri-lisp-adv)
-(require 'ri-dev-gen)
-(require 'ri-lsp)
-(require 'ri-lang-c-cpp)
-(require 'ri-lang-cl)
-(require 'ri-lang-scheme)
+(ri/load "ri-magit")
+(ri/load "ri-emacs-lisp")
+(ri/load "ri-lisp-gen")
+(ri/load "ri-lisp-adv")
+(ri/load "ri-dev-gen")
+(ri/load "ri-lsp")
+(ri/load "ri-lang-c-cpp")
+(ri/load "ri-lang-cl")
+(ri/load "ri-lang-scheme")
 ;; (require 'ri-tree-sitter) ; broken rust comments
-(require 'ri-lang-rust)
+(ri/load "ri-lang-rust")
 ;; other
-(require 'ri-server)
+(ri/load "ri-server")
 ;; misc
-(require 'ri-rest) ; temp
+(ri/load "ri-rest") ; temp
 
 ;;; ----- Do whatever you want below: -----
 
@@ -152,7 +158,7 @@
     ;; default config modules. set up for meow with qwerty:
     (progn
       (defvar rx/example-meow-qwerty-modules
-	'((require 'ri-meow-qwerty)))
+	'((ri/load "ri-meow-qwerty")))
       (ri/modules-require rx/example-meow-qwerty-modules))
   
   ;; Otherwise, use my personal config:
@@ -160,8 +166,8 @@
   ;; (comment this out if u dont want meow with dvorak)
   (progn
     (defvar ri/lily-specific-modules
-      '((require 'ri-meow-dvp)
-	(require 'ri-swap-x-and-u)))
+      '((ri/load "ri-meow-dvp")
+	(ri/load "ri-swap-x-and-u")))
     (ri/modules-require ri/lily-specific-modules)))
 
 

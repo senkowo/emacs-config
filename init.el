@@ -80,13 +80,14 @@
 ;; TODO: create macros that does Rest of modules, which can macroexpand.
 ;; TODO: running require causes errors to not show location of error...
 
-(require 'ri-modules)
+;; cannot use ri/load, because that function is loaded from ri-modules
+(load "ri-modules")
 
 (defvar ri/pre-init-modules
-  '((require 'ri-package)
-    (require 'ri-setup)
-    (require 'ri-pivotal)))
-(ri/modules-require ri/pre-init-modules)
+  '((ri/load "ri-package")
+    (ri/load "ri-setup")
+    (ri/load "ri-pivotal")))
+(ri/load ri/pre-init-modules)
 
 ;; Load the user-side config
 (load (concat user-emacs-directory "config"))
