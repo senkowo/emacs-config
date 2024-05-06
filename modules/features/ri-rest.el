@@ -9,4 +9,28 @@
   "dr" 'rgrep
   "dR" 'find-grep-dired)
 
+
+;; hex color highlighting
+
+;; (setup (:pkg rainbow-mode))
+
+(use-package rainbow-mode)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 (provide 'ri-rest)

@@ -1,6 +1,6 @@
-#+TITLE: Newmacs config
+#+TITLE: rin-emacs
 
-(placeholder name (i named it Newmacs because it's new unlike my old config))
+(placeholder name)
 
 Name ideas:
 - cdrmacs

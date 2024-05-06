@@ -44,7 +44,7 @@
 ;;; Default Font:
 ;; typically for regular text, modeline, minibuffer, etc.
 ;; TODO: why defvar here????
-(set-face-attribute 'default nil :font "Fira Code" :height 110)
+;; (set-face-attribute 'default nil :font "Fira Code" :height 110) ; good alt
 ;; (set-face-attribute 'default nil :font "JetBrains Mono" :height 115)
 ;; (set-face-attribute 'default nil :font "Hack" :height 110)
 ;; (set-face-attribute 'default nil :font "Borg Sans Mono" :height 120) ; old (s/n)
@@ -56,7 +56,7 @@
 ;; (set-face-attribute 'default nil :font (alist-get 'tamzen-20 font-alist))
 ;; (set-face-attribute 'default nil :font (alist-get 'terminal-20 font-alist))
 
-;; DOESNT WORK (set-face-attribute 'default nil :font (alist-get 'tamzenPL-16 font-alist))
+(set-face-attribute 'default nil :font (alist-get 'tamzenPL-16 font-alist))
 ;; (set-face-attribute 'default nil :font (alist-get 'terminus-16 font-alist))
 
 ;; (set-face-attribute 'default nil :font (alist-get 'spleen-16 font-alist))
